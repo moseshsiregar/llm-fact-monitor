@@ -1,0 +1,646 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+/// Category of the original publication source for a Fact.
+enum SourceCategory {
+  OFFICIAL_WEBSITE
+  LOCAL_NEWS
+  NATIONAL_NEWS
+  SOCIAL_MEDIA
+  PARLIAMENTARY_RECORD
+  PARTY_WEBSITE
+  COMMUNITY_ORGANISATION
+  WIKIPEDIA
+  OTHER
+}
+
+/// Lifecycle stage of a Fact within the research design.
+/// PRE_PUBLICATION facts can still be used as a baseline (they should NOT be
+/// discoverable yet). PUBLISHED facts are live and being monitored.
+/// ARCHIVED facts are retained for history but excluded from new runs.
+enum FactStatus {
+  PRE_PUBLICATION
+  PUBLISHED
+  ARCHIVED
+}
+
+/// Style/category of a research prompt.
+enum PromptType {
+  GENERAL
+  DIRECTED
+  INDIRECT
+  ADVERSARIAL
+  OTHER
+}
+
+/// Status of a single experiment run against a provider.
+enum RunStatus {
+  PENDING
+  RUNNING
+  SUCCESS
+  ERROR
+}
+
+/// Tri-state detection outcome. UNCERTAIN is used when the detector finds
+/// weak/partial evidence that should not be silently treated as a match.
+enum DetectionStatus {
+  FOUND
+  NOT_FOUND
+  UNCERTAIN
+}
+
+/// Method used to decide a FactDetection's status. Kept explicit so the
+/// dashboard never implies more rigor than what actually ran.
+enum DetectionMethod {
+  KEYWORD_MATCH
+  PHRASE_MATCH
+  MANUAL
+  LLM_JUDGE
+  OTHER
+  /// Phase 5 stage-1 deterministic matcher: word-window adjacency instead
+  /// of strict substring adjacency, plus date/title normalization. Replaces
+  /// KEYWORD_MATCH for auto-derived (non-explicit-keyword) facts going
+  /// forward; historical rows keep whichever method actually produced them.
+  DETERMINISTIC_V2
+  /// Phase 5 stage-2 post-retrieval semantic entailment check (see
+  /// FactVerifier). Not yet wired to a live judge in production - see
+  /// `hybridDetectFact`'s `justification` field on UNCERTAIN rows.
+  SEMANTIC_ENTAILMENT
+}
+
+/// Relationship between a citation's domain and the fact's registered
+/// original source domain. We only ever claim what we can directly observe.
+enum SourceRelationship {
+  ORIGINAL_SOURCE
+  DOWNSTREAM_OR_DIFFERENT_SOURCE
+  UNKNOWN_SOURCE
+  /// The fact was detected, but the researcher never supplied an original
+  /// source for it (source metadata is optional at fact-entry time), so no
+  /// comparison is possible. Distinct from UNKNOWN_SOURCE (source WAS
+  /// registered but no citation happened to match it).
+  SOURCE_NOT_SPECIFIED
+  NOT_APPLICABLE
+}
+
+/// Whether a record reflects a genuine API-backed provider response or a
+/// synthetic mock used for demos/tests. Applied to LLMProvider (is this
+/// adapter mock or real?), Experiment and ExperimentRun (was this specific
+/// study/observation real or synthetic?) so historical seed data can never
+/// be mistaken for an empirical observation.
+enum DataOrigin {
+  REAL
+  MOCK
+}
+
+/// The execution surface a provider response came from. API-grounded
+/// responses are not necessarily identical to a provider's consumer
+/// website/app, so this is recorded explicitly rather than assumed.
+enum ExecutionSurface {
+  /// Provider's API was called DIRECTLY (its own SDK/endpoint) with its
+  /// native web-search/search-grounding tool enabled. Not currently used by
+  /// any live-wired adapter (preserved for a possible future direct-SDK
+  /// path) - see OPENROUTER_API_NATIVE_SEARCH for the current live path.
+  API_WEB_SEARCH
+  /// Provider's API was called with no web-search tool enabled/available.
+  API_NO_WEB_SEARCH
+  /// Called via OpenRouter as the access layer, with the provider's own
+  /// native web search engaged (either OpenRouter's `web` plugin in
+  /// `engine:"native"` mode, or a provider whose search is inherent/
+  /// always-on - see `SearchMechanism`).
+  OPENROUTER_API_NATIVE_SEARCH
+  /// Synthetic mock adapter (no real API call was made).
+  MOCK_SIMULATION
+}
+
+/// Which access layer (SDK/gateway) was used to reach the underlying model.
+/// Distinct from `ExecutionSurface` (which also folds in web-search state) -
+/// this purely answers "how did we reach the provider".
+enum AccessLayer {
+  /// Routed through OpenRouter's unified API.
+  OPENROUTER
+  /// Called a provider's own SDK/endpoint directly. Preserved for possible
+  /// future comparison work - not currently used by any live-wired adapter.
+  DIRECT_SDK
+  /// Not applicable (mock/synthetic run).
+  NONE
+}
+
+/// How the provider's native web search was actually invoked for this run.
+/// Both values represent a genuine provider-native web-search observation -
+/// neither is a fallback/third-party search engine.
+enum SearchMechanism {
+  /// OpenRouter's `web` plugin was forced to `engine:"native"` for this
+  /// call (used for OpenAI/Gemini/Claude via OpenRouter).
+  OPENROUTER_NATIVE_WEB_PLUGIN
+  /// The provider's web search is inherent/always-on and cannot be
+  /// toggled - the plugin block was omitted entirely rather than forced
+  /// (used for Perplexity via OpenRouter, whose native-search routing
+  /// filter has no path for an always-on-search model).
+  PROVIDER_INHERENT_WEB_SEARCH
+  /// Not applicable (mock/synthetic run, or no web search was used).
+  NONE
+}
+
+/// Whether a Citation is tied to a specific span of the answer text (the
+/// provider structurally associates this source with that exact text) or
+/// only to the response as a whole. Distinct from FactDetection's own
+/// citationAttribution, which asks whether a DETECTED FACT can be tied to a
+/// citation - this describes the citation's own native precision.
+enum CitationSpanKind {
+  CLAIM_LEVEL
+  RESPONSE_LEVEL
+}
+
+/// Broad category of a real-provider run failure. Kept separate from a
+/// detected "fact not found" - an ERROR run means we never obtained a valid
+/// observation, so it must never be silently treated as NOT_FOUND.
+enum RunErrorCategory {
+  AUTHENTICATION
+  RATE_LIMIT
+  TIMEOUT
+  PROVIDER_OUTAGE
+  MALFORMED_RESPONSE
+  TOOL_ERROR
+  NETWORK
+  UNKNOWN
+}
+
+/// Phase 8 — whether a semantic-verifier call for a single FactDetection
+/// actually completed and returned a judgment, or technically failed
+/// (timeout/rate-limit/outage/malformed response/network/auth/unknown). A
+/// technical failure must NEVER be silently recorded as NOT_FOUND - it is
+/// analytically distinct from "the verifier judged the fact absent".
+enum VerificationStatus {
+  SUCCESS
+  ERROR
+}
+
+/// Mirrors `RunErrorCategory` but scoped to semantic-verifier calls
+/// specifically (a verifier call has no TOOL_ERROR concept - it never
+/// invokes provider-side tools/web search).
+enum VerificationErrorCategory {
+  AUTHENTICATION
+  RATE_LIMIT
+  TIMEOUT
+  PROVIDER_OUTAGE
+  MALFORMED_RESPONSE
+  NETWORK
+  UNKNOWN
+}
+
+/// Phase 8 — the semantic verifier's raw, pre-collapse 4-class verdict
+/// (see `VerifierRawStatus` in `src/lib/detection/factVerifier.ts`).
+/// `FactDetection.status` (3-class: FOUND/NOT_FOUND/UNCERTAIN) is derived
+/// from this by collapsing PARTIAL_SUPPORT -> UNCERTAIN for the simplified
+/// matrix display; `semanticStatus` preserves the un-collapsed distinction
+/// so evidence pages can tell "partial support" apart from "genuinely
+/// uncertain" (Phase 8 Section 4). Null for detections that predate Phase 8
+/// or whose verification call technically failed (see
+/// `VerificationStatus`).
+enum SemanticRawStatus {
+  FOUND
+  PARTIAL_SUPPORT
+  NOT_FOUND
+  UNCERTAIN
+}
+
+/// The two research modes (see Experiment). Stored on both Experiment and
+/// ExperimentRun (denormalized onto the run) so historical results remain
+/// interpretable even if an Experiment is later edited or removed, and so
+/// dashboard queries can filter runs by mode without an extra join.
+enum ExperimentMode {
+  /// Researcher asks a question reasonably directed toward a fact's topic
+  /// without stating the fact. Measures: can this be retrieved when the
+  /// model is pointed toward the relevant subject?
+  TARGETED_RETRIEVAL
+  /// Researcher asks a broad, general question about the politician. The
+  /// monitored facts are never sent to the LLM - they are only checked
+  /// against the response afterwards. Measures: does this information
+  /// become salient enough to surface spontaneously?
+  OPEN_ENDED_DISCOVERY
+}
+
+/// Lifecycle of an Experiment configuration (distinct from RunStatus, which
+/// tracks an individual ExperimentRun's execution).
+enum ExperimentStatus {
+  DRAFT
+  RUNNING
+  COMPLETED
+  ERROR
+}
+
+/// How confidently a citation can be tied to a specific detected fact.
+/// Mock providers (and most real search-enabled LLM APIs today) only expose
+/// RESPONSE-level citations - a list of sources for the whole answer, not a
+/// mapping from individual claims to individual sources. We must not invent
+/// claim-level precision we don't have.
+enum CitationAttribution {
+  /// The provider itself associated this citation with this specific claim
+  /// (e.g. inline citation spans). Not currently produced by any adapter.
+  CLAIM_LEVEL
+  /// One or more citations were returned for the response as a whole; we
+  /// cannot say which (if any) specifically supports this fact.
+  RESPONSE_LEVEL
+  /// The fact was detected in the text but the response carried no
+  /// citations at all.
+  UNKNOWN
+  /// The fact was not detected, so citation attribution does not apply.
+  NOT_APPLICABLE
+}
+
+// ---------------------------------------------------------------------------
+// Core research entities
+// ---------------------------------------------------------------------------
+
+model Politician {
+  id        String   @id @default(cuid())
+  name      String
+  party     String?
+  office    String?
+  country   String?
+  notes     String?
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  facts       Fact[]
+  prompts     ResearchPrompt[]
+  experiments Experiment[]
+}
+
+model Fact {
+  id                     String         @id @default(cuid())
+  politicianId           String
+  politician             Politician     @relation(fields: [politicianId], references: [id], onDelete: Cascade)
+  label                  String
+  canonicalFactText      String
+  description            String?
+  /// Original source metadata is OPTIONAL - a researcher can monitor a fact
+  /// without registering where it came from. When absent, source-comparison
+  /// honestly reports SOURCE_NOT_SPECIFIED rather than guessing.
+  originalSourceUrl      String?
+  originalSourceDomain   String?
+  originalSourceCategory SourceCategory?
+  /// Optional comma-separated identifying keywords/phrases used by the
+  /// transparent keyword-matching detector, in addition to the canonical text.
+  identifyingKeywords    String?
+  publishedAt            DateTime?
+  status                 FactStatus     @default(PRE_PUBLICATION)
+  active                 Boolean        @default(true)
+  createdAt              DateTime       @default(now())
+
+  detections      FactDetection[]
+  experimentFacts ExperimentFact[]
+
+  @@index([politicianId])
+}
+
+model ResearchPrompt {
+  id           String     @id @default(cuid())
+  politicianId String
+  politician   Politician @relation(fields: [politicianId], references: [id], onDelete: Cascade)
+  text         String
+  promptType   PromptType @default(GENERAL)
+  active       Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+
+  experimentRuns    ExperimentRun[]
+  experimentPrompts ExperimentPrompt[]
+
+  @@index([politicianId])
+}
+
+/// A pluggable LLM/provider configuration. `providerKey` maps to the
+/// concrete LLMProviderAdapter implementation (mock or real) at runtime.
+model LLMProvider {
+  id            String     @id @default(cuid())
+  name          String
+  model         String
+  providerKey   String     @unique
+  searchEnabled Boolean    @default(true)
+  /// Whether this registry entry is a real API-backed adapter or a
+  /// synthetic mock. The New Experiment page only ever offers `REAL`
+  /// providers; mocks are reserved for seed data and automated tests.
+  kind          DataOrigin @default(MOCK)
+  active        Boolean    @default(true)
+  createdAt     DateTime   @default(now())
+
+  experimentRuns      ExperimentRun[]
+  experimentProviders ExperimentProvider[]
+}
+
+/// A researcher-configured study: one politician, one mode, a chosen set of
+/// monitored facts, prompt(s), providers and a repetition count. This is the
+/// parent of potentially many ExperimentRuns (one per provider x prompt x
+/// repetition). Kept separate from ExperimentRun so a single "press run"
+/// action is reconstructable/inspectable as one coherent unit, while
+/// ExperimentRun keeps tracking individual provider calls exactly as before.
+model Experiment {
+  id           String           @id @default(cuid())
+  name         String?
+  politicianId String
+  politician   Politician       @relation(fields: [politicianId], references: [id], onDelete: Cascade)
+  /// Snapshot of the politician/subject name AT THE TIME this experiment was
+  /// configured (the researcher types this directly - there is no politician
+  /// picker/editor UI). Kept separately from `politician.name` so this
+  /// experiment's historical record can never be silently altered by a
+  /// later, unrelated change to the shared Politician catalog row.
+  subjectName  String           @default("")
+  mode         ExperimentMode
+  /// Number of times each (prompt x provider) combination is executed.
+  repetitions  Int              @default(1)
+  status       ExperimentStatus @default(DRAFT)
+  /// Whether this experiment used real API-backed providers or synthetic
+  /// mocks. Set once at creation time (the New Experiment form always
+  /// creates REAL experiments; the seed script always creates MOCK ones)
+  /// and never changed afterward.
+  dataOrigin   DataOrigin       @default(MOCK)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  facts     ExperimentFact[]
+  prompts   ExperimentPrompt[]
+  providers ExperimentProvider[]
+  runs      ExperimentRun[]
+
+  @@index([politicianId])
+}
+
+/// Facts an Experiment monitors. In OPEN_ENDED_DISCOVERY mode these facts are
+/// NEVER sent to the LLM - they exist purely for post-response detection.
+model ExperimentFact {
+  id           String     @id @default(cuid())
+  experimentId String
+  experiment   Experiment @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  factId       String
+  fact         Fact       @relation(fields: [factId], references: [id], onDelete: Cascade)
+
+  @@unique([experimentId, factId])
+  @@index([factId])
+}
+
+/// Prompt(s) an Experiment sends. TARGETED_RETRIEVAL experiments may select
+/// several existing prompts; OPEN_ENDED_DISCOVERY experiments select/create
+/// exactly one general prompt.
+model ExperimentPrompt {
+  id           String         @id @default(cuid())
+  experimentId String
+  experiment   Experiment     @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  promptId     String
+  prompt       ResearchPrompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
+
+  @@unique([experimentId, promptId])
+  @@index([promptId])
+}
+
+/// LLM providers selected for an Experiment.
+model ExperimentProvider {
+  id           String      @id @default(cuid())
+  experimentId String
+  experiment   Experiment  @relation(fields: [experimentId], references: [id], onDelete: Cascade)
+  providerId   String
+  provider     LLMProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@unique([experimentId, providerId])
+  @@index([providerId])
+}
+
+model ExperimentRun {
+  id              String         @id @default(cuid())
+  providerId      String
+  provider        LLMProvider    @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  promptId        String
+  prompt          ResearchPrompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  /// The parent Experiment configuration this run belongs to, if launched
+  /// from the experiment wizard. Nullable so historical/ad-hoc runs (e.g.
+  /// the original seed script) remain valid without a parent configuration.
+  experimentId    String?
+  experiment      Experiment?    @relation(fields: [experimentId], references: [id], onDelete: SetNull)
+  /// Denormalized copy of the parent Experiment's mode. Defaulted to
+  /// TARGETED_RETRIEVAL so pre-existing rows from before this field existed
+  /// remain correctly classified after migration.
+  mode            ExperimentMode @default(TARGETED_RETRIEVAL)
+  /// Denormalized copy of the parent Experiment's dataOrigin, following the
+  /// same pattern as `mode`. Defaulted to MOCK so pre-existing rows remain
+  /// correctly classified after migration.
+  dataOrigin      DataOrigin     @default(MOCK)
+  /// Exact model identifier REQUESTED from the access layer for THIS run
+  /// (e.g. an OpenRouter model slug like "openai/gpt-4.1", or a direct-SDK
+  /// model name). LLMProvider.model reflects the CURRENT configuration; if
+  /// the environment-configured model changes later, historical runs must
+  /// keep showing the model that actually produced them.
+  modelSnapshot   String?
+  /// Model identifier the access layer reported actually serving the
+  /// request (e.g. OpenRouter's `model` response field). May differ from
+  /// `modelSnapshot` if the access layer re-routes; null when not
+  /// applicable/exposed.
+  returnedModel   String?
+  /// The underlying upstream provider name as reported by the access layer
+  /// (e.g. OpenRouter's top-level `provider` field: "OpenAI", "Google",
+  /// "Anthropic", "Perplexity"). Null when not applicable/exposed.
+  upstreamProvider String?
+  /// Which execution surface produced this run (Section 5/26). Defaulted to
+  /// MOCK_SIMULATION so pre-existing rows (all mock-produced) remain
+  /// accurate after migration.
+  surface         ExecutionSurface @default(MOCK_SIMULATION)
+  /// How this run reached the underlying model. NONE for mock/synthetic
+  /// runs and any pre-existing historical rows.
+  accessLayer     AccessLayer    @default(NONE)
+  /// How the provider's native web search was actually invoked for this
+  /// run, when applicable. NONE for mock/synthetic runs.
+  searchMechanism SearchMechanism @default(NONE)
+  /// Whether the provider's native web-search/search-grounding tool was
+  /// enabled for this call.
+  webSearchEnabled Boolean        @default(false)
+  /// Identifier of the exact provider API/endpoint used, e.g.
+  /// "openai:responses.web_search", "gemini:generateContent.google_search",
+  /// "anthropic:messages.web_search_20250305", "perplexity:chat.completions".
+  /// Freeform (not an enum) since provider tool/API versions change often.
+  providerApi     String?
+  /// Request/response ID reported by the provider, if any (for support
+  /// tickets / audit trails). Never a secret.
+  providerRequestId String?
+  /// Broad category of failure for ERROR runs. Null for SUCCESS runs.
+  errorCategory   RunErrorCategory?
+  /// Number of transient technical retries performed before this run
+  /// reached its final status. NOT a research repetition - each
+  /// `repetitionIndex` remains one genuine observation regardless of how
+  /// many retries it took to obtain it.
+  retryCount      Int            @default(0)
+  inputTokens     Int?
+  outputTokens    Int?
+  totalTokens     Int?
+  /// Number of server-side search requests the provider reports performing
+  /// for this call, if exposed.
+  searchRequestCount Int?
+  /// Provider-reported cost for this call, ONLY when the provider directly
+  /// supplies it. Never calculated locally from token counts.
+  providerCost    Float?
+  /// Groups runs launched together from the experiment configuration screen.
+  batchId         String?
+  /// Index of this run within its repetitions (0-based).
+  repetitionIndex Int            @default(0)
+  status          RunStatus      @default(PENDING)
+  startedAt       DateTime       @default(now())
+  completedAt     DateTime?
+  answerText      String?
+  rawResponse     String?
+  errorMessage    String?
+
+  citations  Citation[]
+  detections FactDetection[]
+  searchQueries SearchQuery[]
+
+  @@index([providerId])
+  @@index([promptId])
+  @@index([experimentId])
+  @@index([batchId])
+  @@index([mode])
+  @@index([dataOrigin])
+}
+
+model Citation {
+  id              String        @id @default(cuid())
+  experimentRunId String
+  experimentRun   ExperimentRun @relation(fields: [experimentRunId], references: [id], onDelete: Cascade)
+  url             String
+  domain          String
+  title           String?
+  /// Whether the provider structurally associates this citation with a
+  /// specific span of the answer text (CLAIM_LEVEL) or only with the
+  /// response as a whole (RESPONSE_LEVEL). Defaulted to RESPONSE_LEVEL,
+  /// matching every current mock/adapter that doesn't expose spans.
+  spanKind        CitationSpanKind @default(RESPONSE_LEVEL)
+  /// Character offsets into the run's `answerText` this citation covers,
+  /// when the provider exposes claim-level spans. Null otherwise.
+  startIndex      Int?
+  endIndex        Int?
+  /// The exact excerpt of answer text the provider associates with this
+  /// citation, when exposed (may differ slightly from answerText[start:end]
+  /// depending on provider tokenization).
+  citedText       String?
+  /// The literal URL the provider returned before any resolution attempt.
+  /// Meaningfully different from `url` only for providers whose "URL" is
+  /// actually an indirection layer (e.g. Google/Gemini grounding returns
+  /// opaque `vertexaisearch.cloud.google.com/grounding-api-redirect/...`
+  /// links, not the original publisher URL). Null when `url` is already the
+  /// direct source URL.
+  rawUrl          String?
+  /// The original publisher URL after safely resolving a redirect-style
+  /// `rawUrl`, when attempted. Currently always null - resolution is not
+  /// performed yet; this field exists so it can be populated later without
+  /// a schema change.
+  resolvedUrl     String?
+  createdAt       DateTime      @default(now())
+
+  detections FactDetection[]
+
+  @@index([experimentRunId])
+}
+
+/// A search query a provider's native web-search tool generated internally,
+/// when the provider's API exposes this. Never inferred/fabricated for
+/// providers that don't expose it. Enables future analysis of
+/// prompt -> generated query -> retrieved domains -> surfaced information.
+model SearchQuery {
+  id              String        @id @default(cuid())
+  experimentRunId String
+  experimentRun   ExperimentRun @relation(fields: [experimentRunId], references: [id], onDelete: Cascade)
+  query           String
+  /// 0-based order in which the provider issued this query, when known.
+  sequence        Int           @default(0)
+  /// Snapshot of the providerKey that generated this query (denormalized
+  /// for convenience so this table can be queried/filtered without a join).
+  provider        String
+  createdAt       DateTime      @default(now())
+
+  @@index([experimentRunId])
+}
+
+model FactDetection {
+  id                 String             @id @default(cuid())
+  experimentRunId    String
+  experimentRun      ExperimentRun      @relation(fields: [experimentRunId], references: [id], onDelete: Cascade)
+  factId             String
+  fact               Fact               @relation(fields: [factId], references: [id], onDelete: Cascade)
+  /// A SPECIFIC citation the detector could confidently tie to this fact.
+  /// Left null unless we have claim-level evidence (see citationAttribution)
+  /// - we never guess which of several response-level citations "caused" a
+  /// detection.
+  citationId         String?
+  citation           Citation?          @relation(fields: [citationId], references: [id], onDelete: SetNull)
+  status             DetectionStatus
+  confidence         Float              @default(0)
+  matchingExcerpt     String?
+  detectionMethod    DetectionMethod    @default(KEYWORD_MATCH)
+  /// Identifies WHICH version of the detection logic produced this row, so
+  /// historical classifications remain reproducible/attributable even after
+  /// the detector is later improved (Phase 5, Part F). Never overwritten -
+  /// a detector change produces NEW FactDetection rows, not edits to old
+  /// ones. Pre-Phase-5 rows are honestly backfilled as the original
+  /// adjacent-bigram algorithm that actually produced them.
+  detectorVersion    String             @default("v1-adjacent-bigram")
+  /// Stage-1 (deterministic) match ratio/evidence strength, recorded even
+  /// when stage 2 (semantic) ultimately decided the final `status` - lets
+  /// us see how far lexical matching alone got. Null only for detections
+  /// predating this field.
+  deterministicScore Float?
+  /// Semantic verifier identifier (e.g. a model name), set only when stage
+  /// 2 actually ran and decided the final `status`.
+  semanticVerifierModel   String?
+  /// Version string for the semantic verifier implementation/prompt used,
+  /// set only alongside `semanticVerifierModel`.
+  semanticVerifierVersion String?
+  /// Free-text justification for the final status - the deterministic
+  /// stage's own note when it was decisive, or (later) the semantic
+  /// verifier's stated reasoning.
+  justification      String?
+  sourceRelationship SourceRelationship @default(NOT_APPLICABLE)
+  /// Whether `citationId` (if set) reflects claim-level provider evidence,
+  /// a response-level "one of these sources was in the answer" inference,
+  /// no citations at all, or does not apply (fact not detected).
+  citationAttribution CitationAttribution @default(NOT_APPLICABLE)
+  detectedAt         DateTime           @default(now())
+
+  /// Phase 8 — the semantic verifier's raw, un-collapsed 4-class verdict.
+  /// See `SemanticRawStatus`'s doc comment. Null for pre-Phase-8 rows and
+  /// for rows whose verification call technically failed.
+  semanticStatus     SemanticRawStatus?
+  /// Whether the semantic verifier call itself succeeded (returned a
+  /// judgment) or technically failed. Defaulted to SUCCESS so historical
+  /// deterministic-only rows (which were never an attempted, failed
+  /// verifier call) remain accurate after migration.
+  verificationStatus VerificationStatus @default(SUCCESS)
+  /// Populated only when `verificationStatus` is ERROR.
+  verificationErrorCategory VerificationErrorCategory?
+  /// Number of bounded technical retries attempted for this verifier call
+  /// before reaching its final `verificationStatus` (Phase 8 Section 7) -
+  /// never a new research observation, just resilience.
+  verifierRetryCount Int                @default(0)
+  /// OpenRouter's generation/request ID for the verifier call, if exposed.
+  verifierRequestId  String?
+  /// Cost of THIS semantic-verification call specifically, kept separate
+  /// from `ExperimentRun.providerCost` (retrieval cost) so the two are
+  /// never conflated (Phase 8 Section 8).
+  verifierCostUsd    Float?
+  verifierInputTokens  Int?
+  verifierOutputTokens Int?
+  verifierTotalTokens  Int?
+
+  @@index([factId])
+  @@index([experimentRunId])
+  @@index([citationId])
+}
+

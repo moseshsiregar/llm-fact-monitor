@@ -1,0 +1,2884 @@
+{
+  "verifierModel": "mistralai/mistral-large-2512",
+  "verifierPromptVersion": "v4-materiality-adjudicated",
+  "fixtureCount": 84,
+  "totalCostUsd": 0.022042599999999996,
+  "createdAt": "2026-09-11T14:55:29.562Z",
+  "results": [
+    {
+      "id": "real-01",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "After leaving Parliament in 2017, Burnham was first elected as mayor of Greater Manchester in May 2017, then reelected for a second term in May 2021 and a third term in May 2024.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham was elected Mayor of Greater Manchester in 2017 and re-elected in 2021 and 2024, matching the FACT's core proposition and all material details (specific years and the sequence of elections).",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MATCHED",
+          "matchedEvidence": "…ere he served until 2017. During the Labour…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MATCHED",
+          "matchedEvidence": "…second term in May 2021 and a third term in…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "…a third term in May 2024. He returned to Par…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.000817
+    },
+    {
+      "id": "real-02",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 0.99,
+      "evidenceExcerpt": "He returned to Parliament as the Labour (Co-op) MP for Makerfield, and has been an MP continually since 18 June 2026.",
+      "justification": "The ANSWER explicitly states that Andy Burnham returned to Parliament as MP for Makerfield on 18 June 2026, which fully supports the FACT, including the exact month and the specific constituency.",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "June 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "18 June 2026",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0003128
+    },
+    {
+      "id": "real-03",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Andy Burnham is a British politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026.",
+      "justification": "The ANSWER explicitly states that Andy Burnham became Prime Minister in July 2026, supporting the core proposition of the FACT. However, it does not specify the exact day (20 July), only the month and year, so the precision is lower than the FACT requires. [raw verifier label: PARTIAL_SUPPORT]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "PARTIAL",
+          "matchedEvidence": "…Labour Party since July 2026. He was born on 7 J…",
+          "note": "Answer supports the month and year but does not state the specific day required by the fact.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "United Kingdom",
+          "status": "MATCHED",
+          "matchedEvidence": "United Kingdom",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "PARTIAL_SUPPORT",
+      "finalRawStatus": "PARTIAL_SUPPORT",
+      "costUsd": 0.0002863
+    },
+    {
+      "id": "real-04",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 0.99,
+      "evidenceExcerpt": "Mayor of Greater Manchester: In 2017, Burnham left Parliament to become the first Mayor of Greater Manchester. He served in this role for nine years, winning re-election in 2021 and 2024.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham was elected Mayor of Greater Manchester in 2017 and re-elected in 2021 and 2024, matching the FACT's core proposition and all material details.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MATCHED",
+          "matchedEvidence": "…ater Manchester: In 2017, Burnham left Parli…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MATCHED",
+          "matchedEvidence": "…ning re-election in 2021 and 2024.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "…lection in 2021 and 2024.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0003308
+    },
+    {
+      "id": "real-05",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham returned to Parliament by winning a by-election for the constituency of Makerfield in June 2026.",
+      "justification": "The ANSWER explicitly asserts the FACT, including the exact month (June 2026) and the specific constituency (Makerfield), as well as the core proposition that Burnham returned to Parliament as MP for that seat.",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "June 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "…cy of Makerfield in June 2026. Following the resi…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0002613
+    },
+    {
+      "id": "real-06",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham is the Prime Minister of the United Kingdom and the Leader of the Labour Party, having assumed both roles on July 20, 2026.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham became Prime Minister of the United Kingdom on the exact date of 20 July 2026, matching the FACT in all material details.",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "July 20, 2026",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "United Kingdom",
+          "status": "MATCHED",
+          "matchedEvidence": "United Kingdom",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0002523
+    },
+    {
+      "id": "real-07",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Elected as the first-ever Mayor of Greater Manchester in May 2017, re-elected in 2021 and again in 2024.",
+      "justification": "The ANSWER explicitly asserts the FACT, including the exact years of election (2017) and re-election (2021 and 2024), as well as the named office (Mayor of Greater Manchester). [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MATCHED",
+          "matchedEvidence": "…Greater Manchester (2017-2026) - Elected as…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MATCHED",
+          "matchedEvidence": "…2017, re-elected in 2021 and again in 2024.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "…n 2021 and again in 2024.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002813
+    },
+    {
+      "id": "real-08",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham returned to Parliament via the Makerfield by-election in June 2026.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham returned to Parliament as MP for Makerfield in June 2026, matching the FACT in all material details (exact month, year, and constituency). [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "June 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "…ield by-election in June 2026.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002318
+    },
+    {
+      "id": "real-09",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Sworn in as Prime Minister of the United Kingdom on 20 July 2026.",
+      "justification": "The ANSWER explicitly asserts the FACT, including the exact date (20 July 2026), the named office (Prime Minister of the United Kingdom), and the named entity (implied as Andy Burnham, given the context of the FACT). [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "20 July 2026",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "United Kingdom",
+          "status": "MATCHED",
+          "matchedEvidence": "United Kingdom",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002468
+    },
+    {
+      "id": "real-10",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "He was Mayor of Greater Manchester from 2017 to 2026",
+      "justification": "The ANSWER explicitly states Andy Burnham's tenure as Mayor of Greater Manchester from 2017 to 2026, supporting the core proposition of his election in 2017 and continuous service. However, it does not explicitly mention his re-elections in 2021 and 2024, which are material components of the FACT. [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MATCHED",
+          "matchedEvidence": "…ter Manchester from 2017 to 2026 and previou…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002938
+    },
+    {
+      "id": "real-11",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "as MP for Makerfield since June 2026",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham has served as MP for Makerfield since June 2026, which directly matches the FACT's claim about his return to Parliament in that exact month and year.",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "June 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "…or Makerfield since June 2026.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0002298
+    },
+    {
+      "id": "real-12",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Andy Burnham is a British Labour politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham became Prime Minister in July 2026, supporting the core proposition of the FACT. However, it does not specify the exact day (20 July), only the month and year, so the precision is lower than the FACT. [raw verifier label: PARTIAL_SUPPORT]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "PARTIAL",
+          "matchedEvidence": "…Labour Party since July 2026.",
+          "note": "Answer supports the month and year but does not state the specific day required by the fact.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "United Kingdom",
+          "status": "MATCHED",
+          "matchedEvidence": "United Kingdom",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "PARTIAL_SUPPORT",
+      "finalRawStatus": "PARTIAL_SUPPORT",
+      "costUsd": 0.0002763
+    },
+    {
+      "id": "syn-001",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham was sworn in as Prime Minister on 20 July 2026, succeeding Keir Starmer in a formal handover ceremony at Downing Street.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham became Prime Minister on the exact date (20 July 2026) as stated in the FACT, including the named office and the precise date. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING; PROPER_NOUN \"United Kingdom\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "20 July 2026",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "United Kingdom",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002553
+    },
+    {
+      "id": "syn-002",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Burnham has served as Prime Minister since July 2026, having taken office in the wake of Keir Starmer's resignation.",
+      "justification": "The ANSWER explicitly states that Andy Burnham became Prime Minister in July 2026, supporting the core proposition of the FACT. However, it does not specify the exact day (20 July), only the month and year, which is less precise than the FACT. [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING; PROPER_NOUN \"United Kingdom\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "PARTIAL",
+          "matchedEvidence": "…rime Minister since July 2026, having taken offic…",
+          "note": "Answer supports the month and year but does not state the specific day required by the fact.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "United Kingdom",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002688
+    },
+    {
+      "id": "syn-003",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER does not mention Rebecca Hartley becoming Chancellor of the Exchequer, nor does it reference the date 3 August 2026 or any role related to that office. The text only discusses her recent role as a backbench spokesperson on trade policy.",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "3 August 2026",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002183
+    },
+    {
+      "id": "syn-004",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.99,
+      "evidenceExcerpt": "Burnham was sworn in as Prime Minister on 21 July 2026",
+      "justification": "The ANSWER explicitly states the date of Andy Burnham becoming Prime Minister as 21 July 2026, which contradicts the FACT's claim of 20 July 2026.",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "CONTRADICTED",
+          "matchedEvidence": "21 July 2026",
+          "note": "Answer asserts a different day (21 July 2026) within the same month/year.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "United Kingdom",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002348
+    },
+    {
+      "id": "syn-005",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "In August 2026, Rebecca Hartley was appointed Chancellor of the Exchequer, becoming the first person from Bradford to hold the post.",
+      "justification": "The ANSWER explicitly asserts the FACT, including the exact month and year of appointment and the named office, with no material details omitted or weakened.",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "August 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "In August 2026, Rebecca Hartley wa…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MATCHED",
+          "matchedEvidence": "Chancellor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0002268
+    },
+    {
+      "id": "syn-006",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Rebecca Hartley became Chancellor of the Exchequer in 2026.",
+      "justification": "The ANSWER explicitly asserts the core proposition that Rebecca Hartley became Chancellor of the Exchequer, but it omits the specific month (August) stated in the FACT, providing only the year. [raw verifier label: PARTIAL_SUPPORT]",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "August 2026",
+          "status": "PARTIAL",
+          "matchedEvidence": "…of the Exchequer in 2026.",
+          "note": "Answer only supports the year; the specific month is not established.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MATCHED",
+          "matchedEvidence": "Chancellor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "PARTIAL_SUPPORT",
+      "finalRawStatus": "PARTIAL_SUPPORT",
+      "costUsd": 0.0002193
+    },
+    {
+      "id": "syn-007",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses David Okafor's involvement in housing policy but does not mention his appointment as Minister for Housing or any specific date (March 2026). The proposition in the FACT is entirely absent.",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "March 2026",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Minister",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002033
+    },
+    {
+      "id": "syn-008",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham was first elected to the House of Commons in 2001, representing the constituency of Leigh.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham first entered Parliament (elected to the House of Commons) in 2001, matching the FACT exactly in both the core proposition and the specific year. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2001",
+          "status": "MATCHED",
+          "matchedEvidence": "…House of Commons in 2001, representing the c…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002288
+    },
+    {
+      "id": "syn-009",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Burnham became an MP at the start of the new millennium",
+      "justification": "The ANSWER explicitly states Burnham became an MP at the start of the new millennium, which aligns with the year 2001, but does not specify the exact year '2001' as in the FACT. [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2001",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002223
+    },
+    {
+      "id": "syn-010",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses David Okafor's representation in Parliament but does not explicitly state the year he was first elected (2015) or assert that he was first elected at any specific time.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2015",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0005975
+    },
+    {
+      "id": "syn-011",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Chancellor of the Exchequer Rebecca Hartley presented the Autumn Budget to the House of Commons on Wednesday.",
+      "justification": "The ANSWER explicitly asserts that Rebecca Hartley holds the office of Chancellor of the Exchequer by naming her with that title.",
+      "criticalComponents": [
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MATCHED",
+          "matchedEvidence": "Chancellor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.000602
+    },
+    {
+      "id": "syn-012",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER describes Rebecca Hartley as a senior Cabinet member responsible for economic policy but does not explicitly state that she holds the specific office of Chancellor of the Exchequer.",
+      "criticalComponents": [
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.000585
+    },
+    {
+      "id": "syn-013",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER explicitly states David Okafor's roles as a Member of Parliament and his position on the Treasury Select Committee but makes no mention of the office of Minister for Housing.",
+      "criticalComponents": [
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Minister",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001853
+    },
+    {
+      "id": "syn-014",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham, the MP for Makerfield, addressed constituents at a town hall meeting in Wigan.",
+      "justification": "The ANSWER explicitly states that Andy Burnham is 'the MP for Makerfield,' which directly asserts the FACT. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0001908
+    },
+    {
+      "id": "syn-015",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "Burnham sits in Parliament as a Labour MP for a Greater Manchester seat.",
+      "justification": "The ANSWER states that Andy Burnham represents a Greater Manchester seat but does not explicitly name the constituency of Makerfield, which is the specific claim in the FACT.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001993
+    },
+    {
+      "id": "syn-016",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "no constituency was mentioned in this profile",
+      "justification": "The ANSWER explicitly states that no constituency was mentioned, directly contradicting the FACT that David Okafor represents Solihull West.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Solihull West",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001848
+    },
+    {
+      "id": "syn-017",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham won the inaugural Greater Manchester mayoral election in 2017 and secured re-election in both 2021 and 2024.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham was elected Mayor of Greater Manchester in 2017 and re-elected in both 2021 and 2024, matching the FACT in all material details and core proposition. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (OFFICE_TITLE \"Mayor\" is MISSING; PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MATCHED",
+          "matchedEvidence": "…mayoral election in 2017 and secured re-elec…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MATCHED",
+          "matchedEvidence": "…re-election in both 2021 and 2024.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "…on in both 2021 and 2024.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002708
+    },
+    {
+      "id": "syn-018",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Burnham has served continuously as Mayor of Greater Manchester since 2017.",
+      "justification": "The ANSWER explicitly supports the core proposition that Andy Burnham was elected Mayor of Greater Manchester in 2017 and has served continuously since, but it does not mention the re-elections in 2021 and 2024, which are material components of the FACT. [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MATCHED",
+          "matchedEvidence": "…er Manchester since 2017.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002548
+    },
+    {
+      "id": "syn-019",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "David Okafor stood down from his council seat in 2022 and did not seek re-election",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that David Okafor did not seek re-election in 2022 and instead stood down from his council seat.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2022",
+          "status": "CONTRADICTED",
+          "matchedEvidence": "…his council seat in 2022 and did not seek re…",
+          "note": "The year appears in the answer, but within an apparently negated statement (e.g. \"did not\"/\"never\") - treated as contradicting rather than confirming the fact.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002253
+    },
+    {
+      "id": "syn-020",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham has long been a joint Labour and Co-operative Party member, standing for Parliament under the 'Labour and Co-operative' banner.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham is a member of the Co-operative Party, matching the FACT's proposition exactly. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Co-operative Party",
+          "status": "MATCHED",
+          "matchedEvidence": "Co-operative Party",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002128
+    },
+    {
+      "id": "syn-021",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses Burnham's alignment with co-operative and mutualist traditions but does not explicitly state that he is a member of the Co-operative Party, which is a specific organizational affiliation.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Co-operative Party",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001863
+    },
+    {
+      "id": "syn-022",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses Rebecca Hartley's education and career but does not mention the Fabian Society or her membership in it.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Fabian Society",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001633
+    },
+    {
+      "id": "syn-023",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Prime Minister Andy Burnham appointed Rebecca Hartley as his Chancellor of the Exchequer shortly after taking office.",
+      "justification": "The ANSWER explicitly asserts the FACT by stating that Andy Burnham appointed Rebecca Hartley as Chancellor of the Exchequer, matching all material components of the claim.",
+      "criticalComponents": [
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MATCHED",
+          "matchedEvidence": "Chancellor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0002118
+    },
+    {
+      "id": "syn-024",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "David Okafor remains a backbench MP and has not held any ministerial office.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that David Okafor has not held any ministerial office, including a junior minister position at the Department for Transport.",
+      "criticalComponents": [
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "minister",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002078
+    },
+    {
+      "id": "syn-025",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Starmer announced his resignation as Prime Minister in July 2026, paving the way for a Labour leadership contest.",
+      "justification": "The ANSWER explicitly asserts the FACT, including the exact month and year of Keir Starmer's resignation as Prime Minister, matching the precision of the FACT. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Keir Starmer\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "July 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "…s Prime Minister in July 2026, paving the way for…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Keir Starmer",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002228
+    },
+    {
+      "id": "syn-026",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.8,
+      "evidenceExcerpt": "Starmer stepped down from the top job earlier this year after a turbulent final few months in office.",
+      "justification": "The ANSWER explicitly asserts that Keir Starmer resigned as Prime Minister, supporting the core proposition of the FACT. However, it does not specify the exact month (July) or year (2026), only stating 'earlier this year,' which is less precise. [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (OFFICE_TITLE \"Prime Minister\" is MISSING; PROPER_NOUN \"Keir Starmer\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "July 2026",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Keir Starmer",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002468
+    },
+    {
+      "id": "syn-027",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 0.98,
+      "evidenceExcerpt": "Hartley committed billions of pounds in additional capital spending on regional transport projects",
+      "justification": "The ANSWER explicitly asserts that Rebecca Hartley (implied by 'Hartley') has committed to increased capital investment in regional transport infrastructure, directly matching the core proposition of the FACT. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Rebecca Hartley\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002088
+    },
+    {
+      "id": "syn-028",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "Hartley's Budget speech focused heavily on fiscal discipline and did not go into detail on any single spending area.",
+      "justification": "The ANSWER explicitly states that Hartley's speech did not detail any specific spending area, which directly contradicts the FACT that she pledged to increase capital investment in regional transport infrastructure.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002208
+    },
+    {
+      "id": "syn-029",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "As Mayor, Burnham chaired the Greater Manchester Combined Authority throughout his time in local government.",
+      "justification": "The ANSWER explicitly states that Andy Burnham chaired the Greater Manchester Combined Authority, which directly entails his affiliation with it. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester Combined Authority",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester Combined Authority",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0001933
+    },
+    {
+      "id": "syn-030",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "David Okafor's public profile makes no mention of any think tank affiliations.",
+      "justification": "The ANSWER explicitly states that David Okafor's public profile does not mention any think tank affiliations, directly contradicting the FACT.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Public Policy Research",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001978
+    },
+    {
+      "id": "syn-031",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "The Combined Authority governs a region of roughly 2.8 million residents across ten boroughs.",
+      "justification": "The ANSWER explicitly asserts the FACT by stating the Combined Authority (implied to be the Greater Manchester Combined Authority in context) oversees a population of approximately 2.8 million people, matching the core proposition and material details. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"The Greater Manchester Combined Authority\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "NUMBER",
+          "expected": "2.8",
+          "status": "MATCHED",
+          "matchedEvidence": "2.8",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "The Greater Manchester Combined Authority",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002313
+    },
+    {
+      "id": "syn-032",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses the Greater Manchester region's size in general terms but does not explicitly assert the specific population figure of approximately 2.8 million people or any population number at all.",
+      "criticalComponents": [
+        {
+          "type": "NUMBER",
+          "expected": "2.8",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "The Greater Manchester Combined Authority",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001883
+    },
+    {
+      "id": "syn-033",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses the responsibilities of the Greater Manchester Combined Authority but does not mention the population size or provide any information that explicitly asserts or supports the claim about overseeing approximately 2.8 million people.",
+      "criticalComponents": [
+        {
+          "type": "NUMBER",
+          "expected": "2.8",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "The Greater Manchester Combined Authority",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001933
+    },
+    {
+      "id": "syn-034",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 0.98,
+      "evidenceExcerpt": "Turnout for the 2024 mayoral contest stood at around 32%",
+      "justification": "The ANSWER explicitly asserts the FACT, including the specific election (2024 Greater Manchester mayoral election, implied by context), the turnout figure (approximately 32%), and the core proposition of turnout percentage. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Greater Manchester\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "Turnout for the 2024 mayoral contest sto…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PERCENTAGE",
+          "expected": "32%",
+          "status": "MATCHED",
+          "matchedEvidence": "32%",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002328
+    },
+    {
+      "id": "syn-035",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "Turnout for the 2024 mayoral contest was low, at roughly a third of registered voters.",
+      "justification": "The ANSWER explicitly supports the core proposition of low turnout in the 2024 mayoral election but uses an approximate figure ('roughly a third') instead of the exact percentage ('approximately 32%') stated in the FACT. [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Greater Manchester\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "Turnout for the 2024 mayoral contest was…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PERCENTAGE",
+          "expected": "32%",
+          "status": "PARTIAL",
+          "matchedEvidence": "…contest was low, at roughly a third of register…",
+          "note": "Possible approximate/paraphrased numeric match - exact precision not confirmed deterministically.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002463
+    },
+    {
+      "id": "syn-036",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses the outcome of the 2024 Greater Manchester mayoral election but does not mention turnout or provide any numerical or approximate figure related to voter participation.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "The 2024 mayoral election sa…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PERCENTAGE",
+          "expected": "32%",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001878
+    },
+    {
+      "id": "syn-037",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Greater Manchester became the UK's fastest-growing city-region during Burnham's time as mayor",
+      "justification": "The ANSWER explicitly asserts the FACT, including the core proposition (fastest-growing city-region in the UK) and the key contextual detail (during Burnham's tenure as mayor).",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "FOUND",
+      "costUsd": 0.0002218
+    },
+    {
+      "id": "syn-038",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses economic improvement during Burnham's tenure but does not explicitly assert that Greater Manchester was ranked the fastest-growing city-region in the UK, nor does it mention any ranking or comparative growth rate. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0001968
+    },
+    {
+      "id": "syn-039",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham was born in Aintree, a suburb of Liverpool, in January 1970.",
+      "justification": "The ANSWER explicitly asserts that Andy Burnham was born in Aintree, Liverpool, matching the FACT's core proposition and location exactly. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002053
+    },
+    {
+      "id": "syn-040",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses Rebecca Hartley's upbringing in the North of England but does not explicitly mention Bradford, the specific birthplace stated in the FACT.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001773
+    },
+    {
+      "id": "syn-041",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham first won the Greater Manchester mayoralty in 2017, was re-elected in 2021 and 2024, and was sworn in as Prime Minister on 20 July 2026 after Keir Starmer's resignation.",
+      "justification": "The ANSWER explicitly asserts all material components of the FACT: Andy Burnham's election as Mayor of Greater Manchester in 2017, re-elections in 2021 and 2024, and his becoming Prime Minister on 20 July 2026, matching the exact dates and events. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (OFFICE_TITLE \"Mayor\" is MISSING; PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "20 July 2026",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MATCHED",
+          "matchedEvidence": "…hester mayoralty in 2017, was re-elected in…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MATCHED",
+          "matchedEvidence": "…, was re-elected in 2021 and 2024, and was s…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "…elected in 2021 and 2024, and was sworn in a…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0003548
+    },
+    {
+      "id": "syn-042",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Burnham served as Mayor of Greater Manchester for nine years before becoming Prime Minister in the summer of 2026.",
+      "justification": "The ANSWER supports the core proposition that Andy Burnham became Prime Minister in 2026 and served as Mayor of Greater Manchester, but it does not explicitly state the exact election years (2017, 2021, 2024) or the exact date (20 July 2026) of becoming Prime Minister. The tenure duration ('nine years') is approximate and does not confirm the specific re-election events. [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "PARTIAL",
+          "matchedEvidence": "…er in the summer of 2026.",
+          "note": "Answer only supports the year; month and day are not established.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0003293
+    },
+    {
+      "id": "syn-043",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses Andy Burnham's political career but does not mention his election as Mayor of Greater Manchester, any re-elections, or his purported appointment as Prime Minister.",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2021",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002013
+    },
+    {
+      "id": "syn-044",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.8,
+      "evidenceExcerpt": "Hartley studied at LSE and later entered Parliament, representing a Bradford constituency.",
+      "justification": "The ANSWER explicitly asserts that Hartley studied at LSE and entered Parliament for a Bradford constituency, supporting the core propositions of the FACT. However, it omits her specific field of study (economics), her role as a special adviser in the Treasury, and the exact constituency (Bradford East) and election year (2019). [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Rebecca Hartley\" is MISSING; PROPER_NOUN \"Bradford East\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2019",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Bradford East",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002698
+    },
+    {
+      "id": "syn-045",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham did not stand down in 2024; he was in fact re-elected for a third term that year.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that Andy Burnham did not stand down in 2024 and was instead re-elected for a third term.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "CONTRADICTED",
+          "matchedEvidence": "…d not stand down in 2024; he was in fact re-…",
+          "note": "The year appears in the answer, but within an apparently negated statement (e.g. \"did not\"/\"never\") - treated as contradicting rather than confirming the fact.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.000628
+    },
+    {
+      "id": "syn-046",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "David Okafor did not vote against the Housing Bill; he was recorded as absent for that division.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that David Okafor did not vote against the Housing Bill and was instead absent.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2025",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Housing Bill",
+          "status": "MATCHED",
+          "matchedEvidence": "Housing Bill",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.000607
+    },
+    {
+      "id": "syn-047",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "There is no indication Hartley has resigned from the Cabinet; she remains Chancellor of the Exchequer as of the most recent reporting.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that there is no indication of Rebecca Hartley resigning from the Cabinet and that she remains in office.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2027",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002178
+    },
+    {
+      "id": "syn-048",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham did not contest the 2024 mayoral election, having already announced his departure from local government the previous year.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that Andy Burnham did not contest the 2024 mayoral election, thus asserting he was not re-elected.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "CONTRADICTED",
+          "matchedEvidence": "…did not contest the 2024 mayoral election, h…",
+          "note": "The year appears in the answer, but within an apparently negated statement (e.g. \"did not\"/\"never\") - treated as contradicting rather than confirming the fact.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002308
+    },
+    {
+      "id": "syn-049",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham became Prime Minister on 3 August 2026, following an unusually long transition period.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating a different date (3 August 2026) for Andy Burnham becoming Prime Minister, rather than the 20 July 2026 date in the FACT.",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "PARTIAL",
+          "matchedEvidence": "…inister on 3 August 2026, following an unusu…",
+          "note": "Answer only supports the year; month and day are not established.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "PARTIAL_SUPPORT",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002398
+    },
+    {
+      "id": "syn-050",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Rebecca Hartley was appointed Home Secretary, not Chancellor, in August 2026.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that Rebecca Hartley was appointed Home Secretary, not Chancellor of the Exchequer, in August 2026. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "August 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "…not Chancellor, in August 2026.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MATCHED",
+          "matchedEvidence": "Chancellor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002143
+    },
+    {
+      "id": "syn-051",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham was elected Mayor of Greater Manchester in 2019, two years later than commonly reported.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating the election year as 2019 instead of 2017, directly negating the proposition.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.00062
+    },
+    {
+      "id": "syn-052",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "David Okafor represents the constituency of Solihull East, not Solihull West.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating that David Okafor represents Solihull East, not Solihull West. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Solihull West",
+          "status": "MATCHED",
+          "matchedEvidence": "Solihull West",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0001983
+    },
+    {
+      "id": "syn-053",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "PARTIAL_SUPPORT",
+      "llmConfidence": 0.9,
+      "evidenceExcerpt": "Nearly half of the transport budget went toward integrating the bus network under public control.",
+      "justification": "The ANSWER explicitly supports the core proposition of the FACT (allocation of a significant portion of the transport budget to bus network integration) but uses an approximate term ('nearly half') instead of the exact percentage ('45%'). [adjudication: Semantic verifier said PARTIAL_SUPPORT, but a core entity/title is not fully confirmed (PROPER_NOUN \"Greater Manchester Combined Authority's\" is MISSING); downgraded to UNCERTAIN.]",
+      "criticalComponents": [
+        {
+          "type": "PERCENTAGE",
+          "expected": "45%",
+          "status": "PARTIAL",
+          "matchedEvidence": "Nearly half of the transpo…",
+          "note": "Possible approximate/paraphrased numeric match - exact precision not confirmed deterministically.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester Combined Authority's",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002313
+    },
+    {
+      "id": "syn-054",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 0.98,
+      "evidenceExcerpt": "Approximately 45% of the transport budget was spent on bringing the bus network back under public control.",
+      "justification": "The ANSWER explicitly states that approximately 45% of the transport budget was allocated to a bus network-related initiative, which directly matches the core proposition and percentage in the FACT. The phrasing 'bringing the bus network back under public control' is a specific form of bus network integration, fulfilling the material components. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Greater Manchester Combined Authority's\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PERCENTAGE",
+          "expected": "45%",
+          "status": "MATCHED",
+          "matchedEvidence": "45%",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester Combined Authority's",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002653
+    },
+    {
+      "id": "syn-055",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses the transport budget's priorities but does not mention the bus network integration or provide any allocation percentage, thus failing to assert the specific proposition in the FACT.",
+      "criticalComponents": [
+        {
+          "type": "PERCENTAGE",
+          "expected": "45%",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester Combined Authority's",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001868
+    },
+    {
+      "id": "syn-056",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Burnham committed to a major increase in the supply of affordable homes throughout the region.",
+      "justification": "The ANSWER explicitly asserts the core proposition of the FACT, using synonymous language ('committed to a major increase' for 'pledged to expand' and 'affordable homes' for 'affordable housing') and specifying the same geographic scope ('throughout the region' for 'across Greater Manchester'). [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Andy Burnham\" is MISSING; PROPER_NOUN \"Greater Manchester\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002498
+    },
+    {
+      "id": "syn-057",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "FOUND",
+      "llmConfidence": 0.98,
+      "evidenceExcerpt": "In her maiden Budget statement, Hartley stressed the importance of keeping the public finances under control.",
+      "justification": "The ANSWER explicitly asserts that Rebecca Hartley (implied by 'Hartley') emphasized fiscal responsibility (phrased as 'keeping the public finances under control') in her first (maiden) Budget, matching the core proposition and material components of the FACT. [adjudication: Semantic verifier said FOUND, but a core entity/title is not fully confirmed (PROPER_NOUN \"Rebecca Hartley\" is MISSING); downgraded to UNCERTAIN rather than trusting the semantic FOUND alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002353
+    },
+    {
+      "id": "syn-058",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "David Okafor has spoken about the challenges facing local housebuilding in general terms, without setting out specific proposals.",
+      "justification": "The ANSWER discusses David Okafor's general comments on housebuilding challenges but does not explicitly assert that he called for reform of the planning system, which is the specific proposition in the FACT. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002253
+    },
+    {
+      "id": "syn-059",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "Andy Burnham and Sarah Coombes both stood as candidates in the 2024 mayoral election.",
+      "justification": "The ANSWER states that both candidates stood in the 2024 mayoral election but does not explicitly assert that Andy Burnham defeated Sarah Coombes, which is the core proposition of the FACT. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "…s candidates in the 2024 mayoral election.",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Sarah Coombes",
+          "status": "MATCHED",
+          "matchedEvidence": "Sarah Coombes",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002333
+    },
+    {
+      "id": "syn-060",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham was re-elected as Mayor of Greater Manchester on 20 July 2026.",
+      "justification": "The ANSWER explicitly states that Andy Burnham was *re-elected* as Mayor on 20 July 2026, which contradicts the FACT that he *resigned* on that date. The core proposition of the FACT is not supported. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "MATCHED",
+          "matchedEvidence": "20 July 2026",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0002468
+    },
+    {
+      "id": "syn-061",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses Rebecca Hartley and Andy Burnham as senior figures in the Labour Party but does not explicitly assert or imply that Hartley challenged Burnham for the Labour leadership. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0001843
+    },
+    {
+      "id": "syn-062",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER mentions that David Okafor and the government made public statements about housing policy but does not explicitly assert that he criticised the government's housing policy. [adjudication: All material critical components (entities, dates, titles) matched the answer, but the semantic verifier returned NOT_FOUND - likely because the specific relationship/proposition (not just the presence of entities) was not confirmed. Final verdict downgraded to UNCERTAIN rather than trusting either signal alone.]",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MATCHED",
+          "matchedEvidence": "David Okafor",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "FOUND",
+      "finalRawStatus": "UNCERTAIN",
+      "costUsd": 0.0001778
+    },
+    {
+      "id": "syn-063",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham became Prime Minister on 20 July 2027.",
+      "justification": "The ANSWER explicitly states the date of Andy Burnham becoming Prime Minister as 20 July 2027, which directly contradicts the FACT's claim of 20 July 2026.",
+      "criticalComponents": [
+        {
+          "type": "DATE",
+          "expected": "20 July 2026",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MATCHED",
+          "matchedEvidence": "Prime Minister",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002218
+    },
+    {
+      "id": "syn-064",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham was elected Mayor of Greater Manchester in 2013.",
+      "justification": "The ANSWER explicitly contradicts the FACT by stating the election year as 2013 instead of 2017, so the specific proposition in the FACT is not asserted.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2017",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MATCHED",
+          "matchedEvidence": "Mayor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002118
+    },
+    {
+      "id": "syn-065",
+      "stage1Decisive": true,
+      "stage1Label": "FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Rebecca Hartley was appointed Chancellor of the Exchequer in August 2025.",
+      "justification": "The ANSWER explicitly states the appointment occurred in August 2025, which contradicts the FACT's claim of August 2026.",
+      "criticalComponents": [
+        {
+          "type": "MONTH_YEAR",
+          "expected": "August 2026",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MATCHED",
+          "matchedEvidence": "Chancellor",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002098
+    },
+    {
+      "id": "syn-066",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 1,
+      "evidenceExcerpt": "Andy Burnham was re-elected as Mayor of Greater Manchester for a third term",
+      "justification": "The ANSWER explicitly states that Andy Burnham was re-elected as Mayor of Greater Manchester in 2026, not that he became Prime Minister. The roles and propositions are entirely distinct.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2026",
+          "status": "MATCHED",
+          "matchedEvidence": "In 2026, Andy Burnham was r…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Prime Minister",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002123
+    },
+    {
+      "id": "syn-067",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses Andy Burnham and a 2024 event but does not explicitly state or assert that he was re-elected Mayor of Greater Manchester in 2024. The core proposition of the FACT is absent.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2024",
+          "status": "MATCHED",
+          "matchedEvidence": "In 2024, Andy Burnham annou…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Mayor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MATCHED",
+          "matchedEvidence": "Andy Burnham",
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Greater Manchester",
+          "status": "MATCHED",
+          "matchedEvidence": "Greater Manchester",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002058
+    },
+    {
+      "id": "syn-068",
+      "stage1Decisive": false,
+      "stage1Label": null,
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER mentions Rebecca Hartley and the year 2026 but does not assert or imply her appointment as Chancellor of the Exchequer. It only references a speech on tax policy, which is topically related but does not confirm the specific proposition in the FACT.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2026",
+          "status": "MATCHED",
+          "matchedEvidence": "In 2026, Rebecca Hartley ga…",
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "OFFICE_TITLE",
+          "expected": "Chancellor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MATCHED",
+          "matchedEvidence": "Rebecca Hartley",
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002198
+    },
+    {
+      "id": "syn-069",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "Burnham has previously expressed sympathy for electoral reform in general terms, though his precise position has shifted over time and was not restated in this particular interview.",
+      "justification": "The ANSWER discusses Burnham's general stance on electoral reform but does not explicitly assert his support for proportional representation specifically, nor does it confirm the FACT's proposition.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002313
+    },
+    {
+      "id": "syn-070",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "Asked about future tax policy, Hartley said only that 'all options remain on the table', declining to rule anything in or out.",
+      "justification": "The ANSWER does not explicitly assert that Rebecca Hartley opposes further tax rises; instead, it states she refused to rule out any options, which contradicts the FACT's claim of opposition.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Rebecca Hartley",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002328
+    },
+    {
+      "id": "syn-071",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": null,
+      "justification": "The ANSWER discusses speculation about backbenchers in general but does not explicitly assert that David Okafor was considered for a Cabinet post. The proposition in the FACT is absent.",
+      "criticalComponents": [
+        {
+          "type": "PROPER_NOUN",
+          "expected": "David Okafor",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0001928
+    },
+    {
+      "id": "syn-072",
+      "stage1Decisive": true,
+      "stage1Label": "NOT_FOUND",
+      "llmRawStatus": "NOT_FOUND",
+      "llmConfidence": 0.95,
+      "evidenceExcerpt": "Downing Street has neither confirmed nor denied any specific date",
+      "justification": "The ANSWER explicitly states that no specific date for an election has been confirmed or denied, and it does not mention Andy Burnham or his government's plans, directly contradicting the FACT.",
+      "criticalComponents": [
+        {
+          "type": "YEAR",
+          "expected": "2027",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "MATERIAL_DETAIL"
+        },
+        {
+          "type": "PROPER_NOUN",
+          "expected": "Andy Burnham's",
+          "status": "MISSING",
+          "matchedEvidence": null,
+          "materiality": "CORE_ENTITY"
+        }
+      ],
+      "componentAdjudication": "NOT_FOUND",
+      "finalRawStatus": "NOT_FOUND",
+      "costUsd": 0.0002103
+    }
+  ]
+}

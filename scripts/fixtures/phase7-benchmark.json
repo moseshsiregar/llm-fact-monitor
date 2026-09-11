@@ -1,0 +1,853 @@
+{
+  "version": "phase7-benchmark-v1",
+  "createdAt": "2026-09-11",
+  "description": "Phase 7 measurement-validity benchmark for the hybrid fact-detection pipeline (deterministic v2 -> semantic verifier -> critical-component adjudication). IMPORTANT PROVENANCE NOTE: every humanLabel value in this file was assigned by the AI coding agent that authored this benchmark (reading each fact/answer pair and judging the correct label) - none were assigned by an independent human annotator, and none were derived from any detector/verifier output. See the per-fixture labelSource field for the exact provenance split. 'source': REAL_PILOT fixtures reuse already-stored fact/answer TEXT from the approved Andy Burnham pilot experiment (no new retrieval calls), though the expected label was still AI-assigned, not human-reviewed; SYNTHETIC fixtures have fact, answer, AND label ALL authored by the AI agent using the same fictional 2026 test scenario established elsewhere in this project (Andy Burnham as a fictional future UK Prime Minister, plus fictional colleagues Rebecca Hartley and David Okafor), clearly marked as synthetic. Editable by hand - change humanLabel/category/notes as needed; this file is read-only input to the evaluation scripts, never written to by them.",
+  "labelValues": [
+    "FOUND",
+    "PARTIAL_SUPPORT",
+    "NOT_FOUND",
+    "UNCERTAIN"
+  ],
+  "fixtures": [
+    {
+      "id": "real-01",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+      "answer": "Andy Burnham is a British politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026. He was born on 7 January 1970 in Liverpool, Merseyside, England.\n\n**Political Career:**\n\nHe was first elected as a member of parliament (MP) for Leigh in 2001, where he served until 2017. During the Labour governments of Tony Blair and Gordon Brown, he was Chief Secretary to the Treasury from 2007 to 2008, Culture Secretary from 2008 to 2009 and Health Secretary from 2009 to 2010.\n\nAfter leaving Parliament in 2017, Burnham was first elected as mayor of Greater Manchester in May 2017, then reelected for a second term in May 2021 and a third term in May 2024. He returned to Parliament as the Labour (Co-op) MP for Makerfield, and has been an MP continually since 18 June 2026.",
+      "humanLabel": "FOUND",
+      "category": "election_reelection",
+      "source": "REAL_PILOT",
+      "notes": "Stored claude answer from pilot experiment cmtwyegqi000eo1zw7abk75y8. Both the 2017 election and both re-elections (2021, 2024) are explicitly and separately stated.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-02",
+      "fact": "Andy Burnham returned to Parliament as MP for Makerfield in June 2026.",
+      "answer": "Andy Burnham is a British politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026. He was first elected as a member of parliament (MP) for Leigh in 2001, where he served until 2017. After leaving Parliament in 2017, Burnham was first elected as mayor of Greater Manchester in May 2017, then reelected for a second term in May 2021 and a third term in May 2024. He returned to Parliament as the Labour (Co-op) MP for Makerfield, and has been an MP continually since 18 June 2026.",
+      "humanLabel": "FOUND",
+      "category": "constituency",
+      "source": "REAL_PILOT",
+      "notes": "Stored claude answer. 'Makerfield' and 'June 2026' (fact only requires month/year precision) are both explicitly stated.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-03",
+      "fact": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+      "answer": "Andy Burnham is a British politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026. He was born on 7 January 1970 in Liverpool, Merseyside, England.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "exact_date",
+      "source": "REAL_PILOT",
+      "notes": "Stored claude answer - the original Phase 6 regression case. Office/person/country all confirmed; only the exact day (20 July, vs 'since July 2026') is missing. This is the canonical exact-date-precision test case.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-04",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+      "answer": "Andy Burnham is the Prime Minister of the United Kingdom and the Leader of the Labour Party, having assumed both roles on July 20, 2026. Before becoming Prime Minister, Burnham had an extensive career in both national and local politics. Mayor of Greater Manchester: In 2017, Burnham left Parliament to become the first Mayor of Greater Manchester. He served in this role for nine years, winning re-election in 2021 and 2024.",
+      "humanLabel": "FOUND",
+      "category": "election_reelection",
+      "source": "REAL_PILOT",
+      "notes": "Stored gemini answer. All three years (2017, 2021, 2024) explicitly and separately stated.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-05",
+      "fact": "Andy Burnham returned to Parliament as MP for Makerfield in June 2026.",
+      "answer": "Andy Burnham returned to Parliament by winning a by-election for the constituency of Makerfield in June 2026. Following the resignation of Keir Starmer, Burnham won the subsequent Labour leadership election with significant support from party MPs and became Prime Minister on July 20, 2026.",
+      "humanLabel": "FOUND",
+      "category": "constituency",
+      "source": "REAL_PILOT",
+      "notes": "Stored gemini answer. Constituency name and month/year both explicit.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-06",
+      "fact": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+      "answer": "Andy Burnham is the Prime Minister of the United Kingdom and the Leader of the Labour Party, having assumed both roles on July 20, 2026.",
+      "humanLabel": "FOUND",
+      "category": "exact_date",
+      "source": "REAL_PILOT",
+      "notes": "Stored gemini answer - unlike the claude answer, gemini states the exact day ('July 20, 2026'), so this is a genuine FOUND, not just PARTIAL_SUPPORT - an important contrast fixture against real-03.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-07",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+      "answer": "Mayor of Greater Manchester (2017-2026) - Elected as the first-ever Mayor of Greater Manchester in May 2017, re-elected in 2021 and again in 2024.",
+      "humanLabel": "FOUND",
+      "category": "election_reelection",
+      "source": "REAL_PILOT",
+      "notes": "Stored openai answer. All three years explicit.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-08",
+      "fact": "Andy Burnham returned to Parliament as MP for Makerfield in June 2026.",
+      "answer": "Having stood down as Mayor earlier in 2026, Burnham returned to Parliament via the Makerfield by-election in June 2026.",
+      "humanLabel": "FOUND",
+      "category": "constituency",
+      "source": "REAL_PILOT",
+      "notes": "Stored openai answer.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-09",
+      "fact": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+      "answer": "Sworn in as Prime Minister of the United Kingdom on 20 July 2026.",
+      "humanLabel": "FOUND",
+      "category": "exact_date",
+      "source": "REAL_PILOT",
+      "notes": "Stored openai answer - exact day stated explicitly.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-10",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+      "answer": "He was Mayor of Greater Manchester from 2017 to 2026 and previously served as MP for Leigh from 2001 to 2017.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "election_reelection",
+      "source": "REAL_PILOT",
+      "notes": "Stored perplexity answer - continuous tenure (2017-2026) stated but the specific 2021/2024 re-election events are not separately confirmed. The canonical tenure-vs-re-election test case.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-11",
+      "fact": "Andy Burnham returned to Parliament as MP for Makerfield in June 2026.",
+      "answer": "Andy Burnham is a British Labour politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026, and as MP for Makerfield since June 2026.",
+      "humanLabel": "FOUND",
+      "category": "constituency",
+      "source": "REAL_PILOT",
+      "notes": "Stored perplexity answer. Constituency and month/year both explicit.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "real-12",
+      "fact": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+      "answer": "Andy Burnham is a British Labour politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "exact_date",
+      "source": "REAL_PILOT",
+      "notes": "Stored perplexity answer - only month/year, day missing.",
+      "labelSource": "AI_AGENT_LABELLED_REAL_ANSWER"
+    },
+    {
+      "id": "syn-001",
+      "fact": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+      "answer": "Burnham was sworn in as Prime Minister on 20 July 2026, succeeding Keir Starmer in a formal handover ceremony at Downing Street.",
+      "humanLabel": "FOUND",
+      "category": "exact_date",
+      "source": "SYNTHETIC",
+      "notes": "Exact day/month/year all explicitly stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-002",
+      "fact": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+      "answer": "Burnham has served as Prime Minister since July 2026, having taken office in the wake of Keir Starmer's resignation.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "exact_date",
+      "source": "SYNTHETIC",
+      "notes": "Month/year support only, exact day missing - synthetic restatement of the original Phase 6 regression case.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-003",
+      "fact": "Rebecca Hartley became Chancellor of the Exchequer on 3 August 2026.",
+      "answer": "Rebecca Hartley has held several senior roles in Westminster over the past decade, most recently as a backbench spokesperson on trade policy.",
+      "humanLabel": "NOT_FOUND",
+      "category": "exact_date",
+      "source": "SYNTHETIC",
+      "notes": "Topically related (same person, Westminster context) but the specific appointment and date are never asserted.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-004",
+      "fact": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+      "answer": "Burnham was sworn in as Prime Minister on 21 July 2026, a day later than initially expected due to a delayed handover ceremony.",
+      "humanLabel": "NOT_FOUND",
+      "category": "exact_date",
+      "source": "SYNTHETIC",
+      "notes": "Same month/year but a directly conflicting day - a contradiction, not merely imprecision.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-005",
+      "fact": "Rebecca Hartley was appointed Chancellor of the Exchequer in August 2026.",
+      "answer": "In August 2026, Rebecca Hartley was appointed Chancellor of the Exchequer, becoming the first person from Bradford to hold the post.",
+      "humanLabel": "FOUND",
+      "category": "month_year_only",
+      "source": "SYNTHETIC",
+      "notes": "Fact and answer both at month/year precision - exact match.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-006",
+      "fact": "Rebecca Hartley was appointed Chancellor of the Exchequer in August 2026.",
+      "answer": "Rebecca Hartley became Chancellor of the Exchequer in 2026.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "month_year_only",
+      "source": "SYNTHETIC",
+      "notes": "Year matches but the specific month (August) is absent.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-007",
+      "fact": "David Okafor was appointed Minister for Housing in March 2026.",
+      "answer": "David Okafor has been a vocal backbencher on housing policy for several years, frequently criticising planning reform delays.",
+      "humanLabel": "NOT_FOUND",
+      "category": "month_year_only",
+      "source": "SYNTHETIC",
+      "notes": "No appointment is asserted at all - in fact the answer implies he remains a backbencher.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-008",
+      "fact": "Andy Burnham first entered Parliament in 2001.",
+      "answer": "Burnham was first elected to the House of Commons in 2001, representing the constituency of Leigh.",
+      "humanLabel": "FOUND",
+      "category": "year_only",
+      "source": "SYNTHETIC",
+      "notes": "Exact year stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-009",
+      "fact": "Andy Burnham first entered Parliament in 2001.",
+      "answer": "Burnham became an MP at the start of the new millennium, early in his political career.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "year_only",
+      "source": "SYNTHETIC",
+      "notes": "Vague temporal reference plausibly consistent with 2001 but not a specific-enough assertion to count as full support.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-010",
+      "fact": "David Okafor was first elected to Parliament in 2015.",
+      "answer": "David Okafor has represented his constituency in Parliament for several years, focusing on local infrastructure investment.",
+      "humanLabel": "NOT_FOUND",
+      "category": "year_only",
+      "source": "SYNTHETIC",
+      "notes": "No year given at all.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-011",
+      "fact": "Rebecca Hartley holds the office of Chancellor of the Exchequer.",
+      "answer": "Chancellor of the Exchequer Rebecca Hartley presented the Autumn Budget to the House of Commons on Wednesday.",
+      "humanLabel": "FOUND",
+      "category": "office_title",
+      "source": "SYNTHETIC",
+      "notes": "Exact office title stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-012",
+      "fact": "Rebecca Hartley holds the office of Chancellor of the Exchequer.",
+      "answer": "Rebecca Hartley is a senior member of the Cabinet with responsibility for economic policy.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "office_title",
+      "source": "SYNTHETIC",
+      "notes": "General role described but the specific office title is never named - genuinely borderline; adjust if you judge this should be NOT_FOUND.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-013",
+      "fact": "David Okafor holds the office of Minister for Housing.",
+      "answer": "David Okafor is the Member of Parliament for a constituency in the West Midlands and sits on the Treasury Select Committee.",
+      "humanLabel": "NOT_FOUND",
+      "category": "office_title",
+      "source": "SYNTHETIC",
+      "notes": "A different role (select committee membership) is described; no ministerial office asserted.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-014",
+      "fact": "Andy Burnham represents the constituency of Makerfield.",
+      "answer": "Burnham, the MP for Makerfield, addressed constituents at a town hall meeting in Wigan.",
+      "humanLabel": "FOUND",
+      "category": "constituency",
+      "source": "SYNTHETIC",
+      "notes": "Exact constituency named.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-015",
+      "fact": "Andy Burnham represents the constituency of Makerfield.",
+      "answer": "Burnham sits in Parliament as a Labour MP for a Greater Manchester seat.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "constituency",
+      "source": "SYNTHETIC",
+      "notes": "General region correct, specific constituency name not stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-016",
+      "fact": "David Okafor represents the constituency of Solihull West.",
+      "answer": "David Okafor has spoken in the Commons on transport and infrastructure but no constituency was mentioned in this profile.",
+      "humanLabel": "NOT_FOUND",
+      "category": "constituency",
+      "source": "SYNTHETIC",
+      "notes": "Constituency never mentioned.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-017",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+      "answer": "Burnham won the inaugural Greater Manchester mayoral election in 2017 and secured re-election in both 2021 and 2024.",
+      "humanLabel": "FOUND",
+      "category": "election_reelection",
+      "source": "SYNTHETIC",
+      "notes": "All three years explicit.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-018",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+      "answer": "Burnham has served continuously as Mayor of Greater Manchester since 2017.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "election_reelection",
+      "source": "SYNTHETIC",
+      "notes": "Continuous-tenure phrasing does not separately confirm the 2021/2024 re-election events.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-019",
+      "fact": "David Okafor was re-elected as a councillor in 2022.",
+      "answer": "David Okafor stood down from his council seat in 2022 and did not seek re-election, choosing instead to focus on his parliamentary duties.",
+      "humanLabel": "NOT_FOUND",
+      "category": "election_reelection",
+      "source": "SYNTHETIC",
+      "notes": "Direct negation of re-election in the same year - also relevant to the negation category.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-020",
+      "fact": "Andy Burnham is a member of the Co-operative Party.",
+      "answer": "Burnham has long been a joint Labour and Co-operative Party member, standing for Parliament under the 'Labour and Co-operative' banner.",
+      "humanLabel": "FOUND",
+      "category": "membership",
+      "source": "SYNTHETIC",
+      "notes": "Explicit membership stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-021",
+      "fact": "Andy Burnham is a member of the Co-operative Party.",
+      "answer": "Burnham is closely aligned with co-operative and mutualist traditions within the Labour movement.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "membership",
+      "source": "SYNTHETIC",
+      "notes": "Ideological alignment described, but formal party membership is never explicitly stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-022",
+      "fact": "Rebecca Hartley is a member of the Fabian Society.",
+      "answer": "Rebecca Hartley studied economics at LSE before working as a policy adviser in the Treasury.",
+      "humanLabel": "NOT_FOUND",
+      "category": "membership",
+      "source": "SYNTHETIC",
+      "notes": "No mention of Fabian Society membership.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-023",
+      "fact": "Rebecca Hartley was appointed Chancellor of the Exchequer by Andy Burnham.",
+      "answer": "Prime Minister Andy Burnham appointed Rebecca Hartley as his Chancellor of the Exchequer shortly after taking office.",
+      "humanLabel": "FOUND",
+      "category": "appointment",
+      "source": "SYNTHETIC",
+      "notes": "Appointer, appointee, and office all explicit.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-024",
+      "fact": "David Okafor was appointed a junior minister at the Department for Transport.",
+      "answer": "David Okafor remains a backbench MP and has not held any ministerial office.",
+      "humanLabel": "NOT_FOUND",
+      "category": "appointment",
+      "source": "SYNTHETIC",
+      "notes": "Direct negation of any ministerial appointment.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-025",
+      "fact": "Keir Starmer resigned as Prime Minister in July 2026.",
+      "answer": "Starmer announced his resignation as Prime Minister in July 2026, paving the way for a Labour leadership contest.",
+      "humanLabel": "FOUND",
+      "category": "resignation",
+      "source": "SYNTHETIC",
+      "notes": "Month/year precision matches the fact exactly.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-026",
+      "fact": "Keir Starmer resigned as Prime Minister in July 2026.",
+      "answer": "Starmer stepped down from the top job earlier this year after a turbulent final few months in office.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "resignation",
+      "source": "SYNTHETIC",
+      "notes": "Resignation confirmed but specific month not stated, only 'earlier this year'.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-027",
+      "fact": "Rebecca Hartley has pledged to increase capital investment in regional transport infrastructure.",
+      "answer": "In her first Budget, Hartley committed billions of pounds in additional capital spending on regional transport projects.",
+      "humanLabel": "FOUND",
+      "category": "policy_position",
+      "source": "SYNTHETIC",
+      "notes": "Paraphrased but clearly entailed policy pledge.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-028",
+      "fact": "Rebecca Hartley has pledged to increase capital investment in regional transport infrastructure.",
+      "answer": "Hartley's Budget speech focused heavily on fiscal discipline and did not go into detail on any single spending area.",
+      "humanLabel": "UNCERTAIN",
+      "category": "policy_position",
+      "source": "SYNTHETIC",
+      "notes": "Genuinely ambiguous - the pledge may exist elsewhere but this particular text neither confirms nor denies it.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-029",
+      "fact": "Andy Burnham is affiliated with the Greater Manchester Combined Authority.",
+      "answer": "As Mayor, Burnham chaired the Greater Manchester Combined Authority throughout his time in local government.",
+      "humanLabel": "FOUND",
+      "category": "organization_affiliation",
+      "source": "SYNTHETIC",
+      "notes": "Explicit affiliation (chair) stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-030",
+      "fact": "David Okafor is affiliated with the Institute for Public Policy Research.",
+      "answer": "David Okafor's public profile makes no mention of any think tank affiliations.",
+      "humanLabel": "NOT_FOUND",
+      "category": "organization_affiliation",
+      "source": "SYNTHETIC",
+      "notes": "Explicitly states no such affiliation is mentioned.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-031",
+      "fact": "The Greater Manchester Combined Authority oversees a population of approximately 2.8 million people.",
+      "answer": "The Combined Authority governs a region of roughly 2.8 million residents across ten boroughs.",
+      "humanLabel": "FOUND",
+      "category": "numerical_quantities",
+      "source": "SYNTHETIC",
+      "notes": "Same approximate figure restated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-032",
+      "fact": "The Greater Manchester Combined Authority oversees a population of approximately 2.8 million people.",
+      "answer": "The Greater Manchester region is one of the largest city-regions in the UK by population.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "numerical_quantities",
+      "source": "SYNTHETIC",
+      "notes": "General size claim only, no figure given.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-033",
+      "fact": "The Greater Manchester Combined Authority oversees a population of approximately 2.8 million people.",
+      "answer": "The Combined Authority is responsible for transport, housing and skills policy across the region.",
+      "humanLabel": "NOT_FOUND",
+      "category": "numerical_quantities",
+      "source": "SYNTHETIC",
+      "notes": "Population figure entirely absent.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-034",
+      "fact": "Turnout in the 2024 Greater Manchester mayoral election was approximately 32%.",
+      "answer": "Turnout for the 2024 mayoral contest stood at around 32%, broadly in line with previous cycles.",
+      "humanLabel": "FOUND",
+      "category": "percentages",
+      "source": "SYNTHETIC",
+      "notes": "Same approximate figure restated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-035",
+      "fact": "Turnout in the 2024 Greater Manchester mayoral election was approximately 32%.",
+      "answer": "Turnout for the 2024 mayoral contest was low, at roughly a third of registered voters.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "percentages",
+      "source": "SYNTHETIC",
+      "notes": "'A third' approximates 32% but is not the exact/restated figure.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-036",
+      "fact": "Turnout in the 2024 Greater Manchester mayoral election was approximately 32%.",
+      "answer": "The 2024 mayoral election saw Burnham win comfortably against a divided opposition field.",
+      "humanLabel": "NOT_FOUND",
+      "category": "percentages",
+      "source": "SYNTHETIC",
+      "notes": "Turnout figure never mentioned.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-037",
+      "fact": "Greater Manchester was ranked the fastest-growing city-region in the UK during Burnham's tenure.",
+      "answer": "Analysts noted that Greater Manchester became the UK's fastest-growing city-region during Burnham's time as mayor.",
+      "humanLabel": "FOUND",
+      "category": "rankings",
+      "source": "SYNTHETIC",
+      "notes": "Ranking/superlative claim explicitly restated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-038",
+      "fact": "Greater Manchester was ranked the fastest-growing city-region in the UK during Burnham's tenure.",
+      "answer": "Greater Manchester saw steady economic improvement during Burnham's mayoralty, according to regional statistics.",
+      "humanLabel": "NOT_FOUND",
+      "category": "rankings",
+      "source": "SYNTHETIC",
+      "notes": "Vague improvement claim, no ranking/superlative asserted.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-039",
+      "fact": "Andy Burnham was born in Aintree, Liverpool.",
+      "answer": "Burnham was born in Aintree, a suburb of Liverpool, in January 1970.",
+      "humanLabel": "FOUND",
+      "category": "locations",
+      "source": "SYNTHETIC",
+      "notes": "Exact location stated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-040",
+      "fact": "Rebecca Hartley was born in Bradford.",
+      "answer": "Hartley grew up in the North of England and studied at a state comprehensive school before attending university.",
+      "humanLabel": "NOT_FOUND",
+      "category": "locations",
+      "source": "SYNTHETIC",
+      "notes": "Only a vague regional reference, not the specific city.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-041",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017, was re-elected in 2021 and 2024, and became Prime Minister on 20 July 2026.",
+      "answer": "Burnham first won the Greater Manchester mayoralty in 2017, was re-elected in 2021 and 2024, and was sworn in as Prime Minister on 20 July 2026 after Keir Starmer's resignation.",
+      "humanLabel": "FOUND",
+      "category": "multi_part_facts",
+      "source": "SYNTHETIC",
+      "notes": "All three components of this multi-part fact are individually confirmed.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-042",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017, was re-elected in 2021 and 2024, and became Prime Minister on 20 July 2026.",
+      "answer": "Burnham served as Mayor of Greater Manchester for nine years before becoming Prime Minister in the summer of 2026.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "multi_part_facts",
+      "source": "SYNTHETIC",
+      "notes": "Overall arc correct but individual re-election years and the exact PM appointment date are missing.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-043",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017, was re-elected in 2021 and 2024, and became Prime Minister on 20 July 2026.",
+      "answer": "Burnham has had a long career in Labour politics, holding several Cabinet posts in the 2000s.",
+      "humanLabel": "NOT_FOUND",
+      "category": "multi_part_facts",
+      "source": "SYNTHETIC",
+      "notes": "None of the three specific multi-part claims are asserted.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-044",
+      "fact": "Rebecca Hartley studied economics at LSE, worked in the Treasury as a special adviser, and was elected MP for Bradford East in 2019.",
+      "answer": "Hartley studied at LSE and later entered Parliament, representing a Bradford constituency.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "multi_part_facts",
+      "source": "SYNTHETIC",
+      "notes": "Education and general seat confirmed; Treasury adviser role and the exact year/constituency name are not confirmed.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-045",
+      "fact": "Andy Burnham stood down as Mayor of Greater Manchester in 2024.",
+      "answer": "Burnham did not stand down in 2024; he was in fact re-elected for a third term that year.",
+      "humanLabel": "NOT_FOUND",
+      "category": "negation",
+      "source": "SYNTHETIC",
+      "notes": "Explicit negation plus a direct contradiction of the proposition.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-046",
+      "fact": "David Okafor voted against the Housing Bill in 2025.",
+      "answer": "David Okafor did not vote against the Housing Bill; he was recorded as absent for that division.",
+      "humanLabel": "NOT_FOUND",
+      "category": "negation",
+      "source": "SYNTHETIC",
+      "notes": "Explicit negation.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-047",
+      "fact": "Rebecca Hartley resigned from the Cabinet in 2027.",
+      "answer": "There is no indication Hartley has resigned from the Cabinet; she remains Chancellor of the Exchequer as of the most recent reporting.",
+      "humanLabel": "NOT_FOUND",
+      "category": "negation",
+      "source": "SYNTHETIC",
+      "notes": "Explicit negation of the proposition.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-048",
+      "fact": "Andy Burnham was re-elected as Mayor of Greater Manchester in 2024.",
+      "answer": "Andy Burnham did not contest the 2024 mayoral election, having already announced his departure from local government the previous year.",
+      "humanLabel": "NOT_FOUND",
+      "category": "negation",
+      "source": "SYNTHETIC",
+      "notes": "Same year mentioned, but the proposition (re-election) is explicitly negated - the year/entity present but proposition denied test case.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-049",
+      "fact": "Andy Burnham became Prime Minister on 20 July 2026.",
+      "answer": "Andy Burnham became Prime Minister on 3 August 2026, following an unusually long transition period.",
+      "humanLabel": "NOT_FOUND",
+      "category": "contradiction",
+      "source": "SYNTHETIC",
+      "notes": "Conflicting specific date, different month entirely.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-050",
+      "fact": "Rebecca Hartley was appointed Chancellor of the Exchequer in August 2026.",
+      "answer": "Rebecca Hartley was appointed Home Secretary, not Chancellor, in August 2026.",
+      "humanLabel": "NOT_FOUND",
+      "category": "contradiction",
+      "source": "SYNTHETIC",
+      "notes": "Conflicting office - month/year matches but the office itself is directly contradicted.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-051",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017.",
+      "answer": "Andy Burnham was elected Mayor of Greater Manchester in 2019, two years later than commonly reported.",
+      "humanLabel": "NOT_FOUND",
+      "category": "contradiction",
+      "source": "SYNTHETIC",
+      "notes": "Conflicting year for the same event.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-052",
+      "fact": "David Okafor represents the constituency of Solihull West.",
+      "answer": "David Okafor represents the constituency of Solihull East, not Solihull West.",
+      "humanLabel": "NOT_FOUND",
+      "category": "contradiction",
+      "source": "SYNTHETIC",
+      "notes": "Conflicting constituency name.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-053",
+      "fact": "Around 45% of the Greater Manchester Combined Authority's transport budget was allocated to bus network integration.",
+      "answer": "Nearly half of the transport budget went toward integrating the bus network under public control.",
+      "humanLabel": "PARTIAL_SUPPORT",
+      "category": "approximate_quantities",
+      "source": "SYNTHETIC",
+      "notes": "'Nearly half' approximates 45% but exact precision is not confirmed.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-054",
+      "fact": "Around 45% of the Greater Manchester Combined Authority's transport budget was allocated to bus network integration.",
+      "answer": "Approximately 45% of the transport budget was spent on bringing the bus network back under public control.",
+      "humanLabel": "FOUND",
+      "category": "approximate_quantities",
+      "source": "SYNTHETIC",
+      "notes": "Same approximate figure explicitly restated.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-055",
+      "fact": "Around 45% of the Greater Manchester Combined Authority's transport budget was allocated to bus network integration.",
+      "answer": "The transport budget covered a range of priorities including cycling infrastructure, road maintenance and rail upgrades.",
+      "humanLabel": "NOT_FOUND",
+      "category": "approximate_quantities",
+      "source": "SYNTHETIC",
+      "notes": "No proportion mentioned at all.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-056",
+      "fact": "Andy Burnham pledged to expand affordable housing across Greater Manchester.",
+      "answer": "Burnham committed to a major increase in the supply of affordable homes throughout the region.",
+      "humanLabel": "FOUND",
+      "category": "paraphrase",
+      "source": "SYNTHETIC",
+      "notes": "Heavy paraphrase with no shared critical components (no dates/numbers/titles), but genuine entailment - tests Rule E deference to the semantic verifier.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-057",
+      "fact": "Rebecca Hartley emphasised fiscal responsibility in her first Budget.",
+      "answer": "In her maiden Budget statement, Hartley stressed the importance of keeping the public finances under control.",
+      "humanLabel": "FOUND",
+      "category": "paraphrase",
+      "source": "SYNTHETIC",
+      "notes": "Another heavy-paraphrase, no-informative-components case.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-058",
+      "fact": "David Okafor called for reform of the planning system.",
+      "answer": "David Okafor has spoken about the challenges facing local housebuilding in general terms, without setting out specific proposals.",
+      "humanLabel": "UNCERTAIN",
+      "category": "paraphrase",
+      "source": "SYNTHETIC",
+      "notes": "Genuinely ambiguous whether general commentary counts as 'calling for reform'.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-059",
+      "fact": "Andy Burnham defeated Sarah Coombes in the 2024 mayoral election.",
+      "answer": "Andy Burnham and Sarah Coombes both stood as candidates in the 2024 mayoral election.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_entities_wrong_relationship",
+      "source": "SYNTHETIC",
+      "notes": "Entities and year present, but the outcome/relationship ('defeated') is never asserted - only that both stood. A bag-of-words detector would wrongly say FOUND; human ground truth is NOT_FOUND. Note: the hybrid pipeline's Rule B is deliberately conservative here and may instead collapse to public UNCERTAIN rather than NOT_FOUND - this divergence is expected and worth reporting, not a bug to silently 'fix' by relabeling.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-060",
+      "fact": "Andy Burnham resigned as Mayor of Greater Manchester on 20 July 2026.",
+      "answer": "Andy Burnham was re-elected as Mayor of Greater Manchester on 20 July 2026.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_entities_wrong_relationship",
+      "source": "SYNTHETIC",
+      "notes": "Date/title/person all match, but the event itself ('resigned' vs 're-elected') is the opposite of what's claimed.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-061",
+      "fact": "Rebecca Hartley challenged Andy Burnham for the Labour leadership.",
+      "answer": "Rebecca Hartley and Andy Burnham are both senior figures in the Labour Party, having worked closely together in government.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_entities_wrong_relationship",
+      "source": "SYNTHETIC",
+      "notes": "Entities present, no leadership-contest relationship stated - in fact implies cooperation, not rivalry.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-062",
+      "fact": "David Okafor criticised the government's housing policy.",
+      "answer": "David Okafor and the government have both made public statements about housing policy in recent months.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_entities_wrong_relationship",
+      "source": "SYNTHETIC",
+      "notes": "Topical overlap only, no critical relationship asserted.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-063",
+      "fact": "Andy Burnham became Prime Minister on 20 July 2026.",
+      "answer": "Andy Burnham became Prime Minister on 20 July 2027.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_event_wrong_year",
+      "source": "SYNTHETIC",
+      "notes": "Same day/month, wrong year.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-064",
+      "fact": "Andy Burnham was elected Mayor of Greater Manchester in 2017.",
+      "answer": "Andy Burnham was elected Mayor of Greater Manchester in 2013.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_event_wrong_year",
+      "source": "SYNTHETIC",
+      "notes": "Same event, wrong year.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-065",
+      "fact": "Rebecca Hartley was appointed Chancellor of the Exchequer in August 2026.",
+      "answer": "Rebecca Hartley was appointed Chancellor of the Exchequer in August 2025.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_event_wrong_year",
+      "source": "SYNTHETIC",
+      "notes": "Same event, wrong year (off by one).",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-066",
+      "fact": "Andy Burnham became Prime Minister in 2026.",
+      "answer": "In 2026, Andy Burnham was re-elected as Mayor of Greater Manchester for a third term.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_year_wrong_event",
+      "source": "SYNTHETIC",
+      "notes": "Same year, entirely different event.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-067",
+      "fact": "Andy Burnham was re-elected Mayor of Greater Manchester in 2024.",
+      "answer": "In 2024, Andy Burnham announced a major new transport investment package for Greater Manchester.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_year_wrong_event",
+      "source": "SYNTHETIC",
+      "notes": "Same year, different event.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-068",
+      "fact": "Rebecca Hartley was appointed Chancellor of the Exchequer in 2026.",
+      "answer": "In 2026, Rebecca Hartley gave a widely-reported speech on tax policy at the Labour Party conference.",
+      "humanLabel": "NOT_FOUND",
+      "category": "same_year_wrong_event",
+      "source": "SYNTHETIC",
+      "notes": "Same year, different event (a speech, not an appointment).",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-069",
+      "fact": "Andy Burnham supports proportional representation for Westminster elections.",
+      "answer": "Burnham has previously expressed sympathy for electoral reform in general terms, though his precise position has shifted over time and was not restated in this particular interview.",
+      "humanLabel": "UNCERTAIN",
+      "category": "ambiguous",
+      "source": "SYNTHETIC",
+      "notes": "Genuinely unclear whether his current position matches the specific fact.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-070",
+      "fact": "Rebecca Hartley opposes further tax rises in the next Budget.",
+      "answer": "Asked about future tax policy, Hartley said only that 'all options remain on the table', declining to rule anything in or out.",
+      "humanLabel": "UNCERTAIN",
+      "category": "ambiguous",
+      "source": "SYNTHETIC",
+      "notes": "A deliberately non-committal statement - genuinely ambiguous.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-071",
+      "fact": "David Okafor was considered for a Cabinet post in the most recent reshuffle.",
+      "answer": "There was speculation in Westminster circles about several backbenchers ahead of the reshuffle, though no official shortlist was ever confirmed or denied.",
+      "humanLabel": "UNCERTAIN",
+      "category": "ambiguous",
+      "source": "SYNTHETIC",
+      "notes": "Neither confirms nor denies; genuinely ambiguous.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    },
+    {
+      "id": "syn-072",
+      "fact": "Andy Burnham's government plans to hold a general election in 2027.",
+      "answer": "Speculation about election timing has circulated in Westminster, but Downing Street has neither confirmed nor denied any specific date.",
+      "humanLabel": "UNCERTAIN",
+      "category": "ambiguous",
+      "source": "SYNTHETIC",
+      "notes": "Genuinely ambiguous - explicit non-confirmation/non-denial.",
+      "labelSource": "AI_AGENT_AUTHORED_SYNTHETIC"
+    }
+  ]
+}

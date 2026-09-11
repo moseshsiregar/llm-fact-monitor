@@ -1,0 +1,46 @@
+{
+  "name": "llm-fact-monitor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test:provider": "tsx scripts/test-provider.ts",
+    "test:openrouter": "tsx scripts/test-openrouter.ts",
+    "test:detection": "tsx scripts/test-detection-fixtures.ts",
+    "test:dashboard": "tsx scripts/test-dashboard-queries.ts",
+    "test:production-detection": "tsx scripts/test-production-detection.ts",
+    "test:detector-versioning": "tsx scripts/test-detector-versioning.ts",
+    "prepare:verifier-fixtures": "tsx scripts/prepare-verifier-fixtures.ts",
+    "run:verifier-fixtures": "tsx scripts/run-verifier-fixtures.ts",
+    "test:adjudication-fixtures": "tsx scripts/test-adjudication-fixtures.ts",
+    "evaluate:deterministic": "tsx scripts/evaluate-deterministic.ts",
+    "evaluate:hybrid": "tsx scripts/evaluate-hybrid.ts",
+    "evaluate:ablation": "tsx scripts/evaluate-ablation.ts",
+    "evaluate:semantic-only": "tsx scripts/evaluate-semantic-only.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.125.0",
+    "@google/genai": "^2.22.0",
+    "@prisma/client": "6.19.3",
+    "next": "16.3.4",
+    "openai": "^7.15.0",
+    "prisma": "6.19.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.13",
+    "typescript": "^5"
+  }
+}

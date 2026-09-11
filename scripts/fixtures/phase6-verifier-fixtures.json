@@ -1,0 +1,35 @@
+[
+  {
+    "experimentRunId": "cmtwyekhk0025o1zw22s3x69u",
+    "providerKey": "claude",
+    "factId": "cmtwyegqc000ao1zwgs5cvpr9",
+    "factLabel": "Andy Burnham became Prime Minister of the United Kingdom ...",
+    "canonicalFactText": "Andy Burnham became Prime Minister of the United Kingdom on 20 July 2026.",
+    "identifyingKeywords": null,
+    "answerText": "Andy Burnham is a British politician who has served as Prime Minister of the United Kingdom and Leader of the Labour Party since July 2026. He was born on 7 January 1970 in Liverpool, Merseyside, England.\n\n**Political Career:**\n\nHe was first elected as a member of parliament (MP) for Leigh in 2001, where he served until 2017. During the Labour governments of Tony Blair and Gordon Brown, he was Chief Secretary to the Treasury from 2007 to 2008, Culture Secretary from 2008 to 2009 and Health Secretary from 2009 to 2010.\n\nAfter leaving Parliament in 2017, Burnham was first elected as mayor of Greater Manchester in May 2017, then reelected for a second term in May 2021 and a third term in May 2024. He returned to Parliament as the Labour (Co-op) MP for Makerfield, and has been an MP continually since 18 June 2026.\n\nHis accession on Monday, following Keir Starmer's short stint of two years as prime minister, marks a shift in Labour's center of gravity, from top-down Westminster technocracy toward a politics of place, investment, and national renewal. Burnham identifies as a socialist and is associated with the Labour Party's soft left; he is also a member of the Co-operative Party.",
+    "deterministicScore": 0.57,
+    "deterministicJustification": "Deterministic stage found partial lexical evidence but was not decisive (matched 4/7 components). Semantic verification is not yet enabled in production - Phase 5 built the FactVerifier interface but stopped before wiring a live judge (see Part D)."
+  },
+  {
+    "experimentRunId": "cmtwyeo35002ro1zwwxuvjor9",
+    "providerKey": "gemini",
+    "factId": "cmtwyegqc0008o1zwgcn9nc05",
+    "factLabel": "Andy Burnham was elected Mayor of Greater Manchester in 2...",
+    "canonicalFactText": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+    "identifyingKeywords": null,
+    "answerText": "Andy Burnham is the Prime Minister of the United Kingdom and the Leader of the Labour Party, having assumed both roles on July 20, 2026.\n\n### Political Career\nBefore becoming Prime Minister, Burnham had an extensive career in both national and local politics:\n\n*   **Early Parliamentary Career:** He was first elected as the Member of Parliament (MP) for Leigh in 2001. During his initial time in Parliament, he served in several high-profile Cabinet positions under Prime Minister Gordon Brown, including Chief Secretary to the Treasury, Secretary of State for Culture, Media and Sport, and Secretary of State for Health.\n*   **Opposition Roles:** After Labour entered opposition in 2010, he served in various shadow cabinet roles, including Shadow Secretary of State for Health, Shadow Secretary of State for Education, and Shadow Home Secretary. He also ran for the Labour Party leadership in 2010 and 2015.\n*   **Mayor of Greater Manchester:** In 2017, Burnham left Parliament to become the first Mayor of Greater Manchester. He served in this role for nine years, winning re-election in 2021 and 2024. His tenure as mayor was noted for the integration of the regional transport system, known as the \"Bee Network,\" which brought buses back under public control.\n*   **Ascension to Prime Minister:** In 2026, amid shifting political dynamics and a desire within the Labour Party for a change in leadership, Burnham returned to Parliament by winning a by-election for the constituency of Makerfield in June 2026. Following the resignation of Keir Starmer, Burnham won the subsequent Labour leadership election with significant support from party MPs and became Prime Minister on July 20, 2026.\n\n### Personal Background\nBorn on January 7, 1970, in Aintree, Liverpool, Burnham was raised in Culcheth, Warrington. He studied English at Fitzwilliam College, Cambridge. Before his election to Parliament in 2001, he worked as a journalist, political researcher, and adviser. He is married and has three children.",
+    "deterministicScore": 0.56,
+    "deterministicJustification": "Deterministic stage found partial lexical evidence but was not decisive (matched 5/9 components). Semantic verification is not yet enabled in production - Phase 5 built the FactVerifier interface but stopped before wiring a live judge (see Part D)."
+  },
+  {
+    "experimentRunId": "cmtwyegqq000to1zw5r2malq5",
+    "providerKey": "perplexity",
+    "factId": "cmtwyegqc0008o1zwgcn9nc05",
+    "factLabel": "Andy Burnham was elected Mayor of Greater Manchester in 2...",
+    "canonicalFactText": "Andy Burnham was elected Mayor of Greater Manchester in 2017 and was re-elected in 2021 and 2024.",
+    "identifyingKeywords": null,
+    "answerText": "Andy Burnham is a **British Labour politician** who has served as **Prime Minister of the United Kingdom** and **Leader of the Labour Party** since July 2026, and as **MP for Makerfield** since June 2026.[2][16] He was **Mayor of Greater Manchester** from 2017 to 2026 and previously served as **MP for Leigh** from 2001 to 2017.[2][16]\n\nHe was born on **7 January 1970** in **Liverpool** and grew up in **Culcheth, Cheshire**.[2][6][7] Before becoming mayor, he held several senior government roles, including **Chief Secretary to the Treasury**, **Culture Secretary**, and **Health Secretary** under Labour governments.[8][9][14][16]\n\nAs mayor, Burnham became known for his focus on **public transport, housing, homelessness, and regional devolution**.[13][14][16] The Greater Manchester Combined Authority says he brought the **bus network back under public control**, and that he oversaw Manchester becoming the **fastest growing city-region in the UK**.[16][18]\n\nIf you want, I can also give you a **short biography**, a **timeline of his career**, or an overview of **his political positions**.",
+    "deterministicScore": 0.44,
+    "deterministicJustification": "Deterministic stage found partial lexical evidence but was not decisive (matched 4/9 components). Semantic verification is not yet enabled in production - Phase 5 built the FactVerifier interface but stopped before wiring a live judge (see Part D)."
+  }
+]
